@@ -2,8 +2,8 @@
 title: "Capstone Project"
 subtitle: Subtitle
 authors:
-  - Bob
-  - Jane
+  - Brandon Rodriguez-Hernandez
+  - Endy Zarate
 title-block-banner: true
 format: 
   html:
