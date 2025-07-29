@@ -1,22 +1,23 @@
 ---
-title: "Capstone Project"
-subtitle: Subtitle
-authors:
-  - Brandon Rodriguez-Hernandez
+title: "Predicting Real Estate Sale Prices in Oregon: A Data-Driven Approach"
+author: 
   - Endy Zarate
+  - Brandon Rodriguez-Hernandez
+date: "today"
 bibliography: references.bib
-title-block-banner: true
 format: 
   html:
-    theme:
-      light: lightly
-      dark: darkly
+    theme: cosmo
+    toc: true
+    toc-location: left
+    mainfont: "serif"
 ---
 
 {{< include _01_intro.qmd >}}
-{{< include _02_background.qmd >}}
-{{< include _03_methods.qmd >}}
-{{< include _04_data.qmd >}}
-{{< include _05_results.qmd >}}
-{{< include _06_conclusions.qmd >}}
-{{< include _07_references.qmd >}}
+{{< include _02_data_eng.qmd >}}
+{{< include _03_visualization.qmd >}}
+{{< include _04_statistical_thinking.qmd >}}
+{{< include _05_machine_learning.qmd >}}
+{{< include _06_data_ethics.qmd >}}
+{{< include _07_conclusions.qmd >}}
+{{< include _08_references.qmd >}}
