@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>capstone</title>
+<title>Predicting Real Estate Sale Prices in Oregon: A Data-Driven Approach</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,19 +88,56 @@ window.Quarto = {
 };
 </script>
 
+<meta name="citation_title" content="Predicting Real Estate Sale Prices in Oregon: A Data-Driven Approach">
+<meta name="citation_author" content="Brandon Rodriguez-Hernandez">
+<meta name="citation_author" content="Endy Zarate">
 <meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=A guide to backward paper writing for the data sciences;,citation_abstract=Summary In this perspective, we outline a set of best practices for the planning, writing, and revision of scientific papers and other forms of professional communication in the data sciences. We propose a backward approach that begins with clearly identifying the scientific and professional goals motivating the work, followed by a purposeful mapping from those goals to each section of a paper. This approach is motivated by the conviction that manuscript writing can be more effective, efficient, creative, and even enjoyable—particularly for early-career researchers—when the overarching goals of the paper and its individual components are clearly mapped out.;,citation_author=Jon Zelner;,citation_author=Kelly Broen;,citation_author=Ella August;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S2666389921003068;,citation_issue=3;,citation_doi=10.1016/j.patter.2021.100423;,citation_issn=2666-3899;,citation_volume=3;,citation_journal_title=Patterns;">
 </head>
 
 <body>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Predicting Real Estate Sale Prices in Oregon: A Data-Driven Approach</h1>
+            <p class="subtitle lead">MSDS Capstone Project</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+        
+        <div class="quarto-title-meta">
+
+                <div>
+            <div class="quarto-title-meta-heading">Authors</div>
+            <div class="quarto-title-meta-contents">
+                        <p>Brandon Rodriguez-Hernandez </p>
+                        <p>Endy Zarate </p>
+                      </div>
+          </div>
+                
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
   <ul class="collapse">
   <li><a href="#data-engineering-acquisition" id="toc-data-engineering-acquisition" class="nav-link" data-scroll-target="#data-engineering-acquisition">Data Engineering &amp; Acquisition</a></li>
@@ -122,18 +159,18 @@ window.Quarto = {
 
 
 
+  
 
-<p>title: “Capstone Project” subtitle: Subtitle authors: - Brandon Rodriguez-Hernandez - Endy Zarate bibliography: references.bib title-block-banner: true format: html: theme: light: lightly dark: darkly</p>
-<hr>
+
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value and time on the market is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers—be it first-time homebuyers navigating a complex process or new agents striving to build a successful career—this knowledge is not readily available. This project aims to bridge that knowledge gap within Oregon’s dynamic housing market by leveraging data science to uncover the key drivers of property valuation.</p>
 <p>The central research question guiding this project is: <strong>Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property’s final sale price and its time on the market?</strong>. While this paper will focus on predicting the final sale price, the groundwork is laid for a future survival analysis to address the time-on-market component.</p>
 </section>
-<section id="introduction-1" class="level1">
-<h1>Introduction</h1>
-<p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value and time on the market is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers—be it first-time homebuyers navigating a complex process or new agents striving to build a successful career—this knowledge is not readily available. This project aims to bridge that knowledge gap within Oregon’s dynamic housing market by leveraging data science to uncover the key drivers of property valuation.</p>
-<p>The central research question guiding this project is: <strong>Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property’s final sale price and its time on the market?</strong>. While this paper will focus on predicting the final sale price, the groundwork is laid for a future survival analysis to address the time-on-market component.</p>
+<section id="background" class="level1">
+<h1>Background</h1>
+<p>The Oregon housing market provides a compelling case study. In the last year, the state has seen a 0.3% rise in median home prices and a 7.9% increase in housing supply. Yet, the median days on the market has also increased, suggesting a potential shift in market dynamics. [cite_start]By building a predictive model based on a robust set of property features, we can distill these complex market signals into actionable insights, making the market more transparent and navigable for everyone involved[cite: 189].</p>
+<p>[cite_start]Key metrics for evaluating the market include the <strong>Case-Shiller Index</strong>, which tracks home value, and <strong>Days on the Market (DOM)</strong>, the time a property is listed before selling[cite: 181]. Our research seeks to identify the property characteristics that are the most significant predictors of both a property’s final sale price and its DOM.</p>
 </section>
 <section id="methodology" class="level1">
 <h1>Methodology</h1>
@@ -184,7 +221,7 @@ Figure&nbsp;1: This histogram focuses on the bulk of the Oregon housing market. 
 <div id="fig-corr" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_2_living_area_vs_sale_amount.jpg" class="lightbox" data-gallery="fig-correlation" title="Figure&nbsp;2&nbsp;(a): Living Area Shows a Clear Positive Correlation with Sale Amount."><img src="visual_2_living_area_vs_sale_amount.jpg" class="img-fluid figure-img" data-ref-parent="fig-correlation"></a>
+<a href="visual_2_living_area_vs_sale_amount.png" class="lightbox" data-gallery="fig-correlation" title="Figure&nbsp;2&nbsp;(a): Living Area Shows a Clear Positive Correlation with Sale Amount."><img src="visual_2_living_area_vs_sale_amount.png" class="img-fluid figure-img" data-ref-parent="fig-correlation"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Living Area Shows a Clear Positive Correlation with Sale Amount.
@@ -207,7 +244,7 @@ Figure&nbsp;2: This scatter plot visualizes the relationship between a property�
 <div id="fig-perf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_3_actual_vs_predicted.jpg" class="lightbox" data-gallery="fig-performance" title="Figure&nbsp;3&nbsp;(a): Model Performance: Actual vs.&nbsp;Predicted Sale Amounts."><img src="visual_3_actual_vs_predicted.jpg" class="img-fluid figure-img" data-ref-parent="fig-performance"></a>
+<a href="visual_3_actual_vs_predicted.png" class="lightbox" data-gallery="fig-performance" title="Figure&nbsp;3&nbsp;(a): Model Performance: Actual vs.&nbsp;Predicted Sale Amounts."><img src="visual_3_actual_vs_predicted.png" class="img-fluid figure-img" data-ref-parent="fig-performance"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Model Performance: Actual vs.&nbsp;Predicted Sale Amounts.
@@ -230,7 +267,7 @@ Figure&nbsp;3: This plot evaluates our model’s predictive accuracy. The points
 <div id="fig-imp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-imp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_4_feature_importance.jpg" class="lightbox" data-gallery="fig-importance" title="Figure&nbsp;4&nbsp;(a): Top 15 Most Influential Features on Sale Amount."><img src="visual_4_feature_importance.jpg" class="img-fluid figure-img" data-ref-parent="fig-importance"></a>
+<a href="visual_4_feature_importance.png" class="lightbox" data-gallery="fig-importance" title="Figure&nbsp;4&nbsp;(a): Top 15 Most Influential Features on Sale Amount."><img src="visual_4_feature_importance.png" class="img-fluid figure-img" data-ref-parent="fig-importance"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-imp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Top 15 Most Influential Features on Sale Amount.
