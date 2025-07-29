@@ -9,11 +9,11 @@ To build upon this foundation and create a more robust and reliable tool, the ne
 1.  **Improve Data Integrity**: Implement sophisticated imputation techniques (e.g., K-Nearest Neighbors or iterative imputation) to handle missing values, thereby retaining a larger and more representative dataset.
 2.  **Address Multicollinearity**: Employ regularization methods such as Ridge or Lasso regression, which are specifically designed to handle multicollinearity and produce more stable and interpretable feature coefficients.
 3.  **Advance the Modeling**: Develop more complex, non-linear models, such as Gradient Boosting or Random Forests, to capture more nuanced relationships in the data and likely improve predictive accuracy.
-4.  **Complete the Research Question**: Conduct the planned **Survival Analysis** to model the 'time on market' component, which will provide a more holistic tool for evaluating real estate opportunities in Oregon.
+4.  **Complete the Research Question**: Conduct the planned **Survival Analysis** to model the 'time on market' component, which will provide a holistic tool for evaluating real estate opportunities in Oregon.
 
 ### Data Ethics
 
-A commitment to ethical practice was paramount throughout this project, ensuring that our analysis provides valuable insights responsibly, fairly, and transparently [@project_proposal]. We addressed several key ethical dimensions:
+A commitment to ethical practice was paramount throughout this project, ensuring that our analysis provides valuable insights responsibly, fairly, and transparently. We addressed several key ethical dimensions:
 
 #### Privacy and Data Handling
 
