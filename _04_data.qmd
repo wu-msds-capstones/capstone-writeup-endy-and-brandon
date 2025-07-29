@@ -1,1 +1,27 @@
-# Data
+# Data Visualization
+
+Visualizations are essential for exploring the data, evaluating model performance, and communicating key findings. The following figures tell the story of our data and the model's capabilities.
+
+::: {#fig-distribution layout-ncol=1}
+![Distribution of Property Sale Amounts (Under $2M).](visual_1_sale_amount_distribution.png){#fig-dist}
+
+This histogram focuses on the bulk of the Oregon housing market. The distribution is clearly right-skewed, with the highest concentration of properties sold for between $200K and $500K.
+:::
+
+::: {#fig-correlation layout-ncol=1}
+![Living Area Shows a Clear Positive Correlation with Sale Amount.](visual_2_living_area_vs_sale_amount.jpg){#fig-corr}
+
+This scatter plot visualizes the relationship between a property's living area and its sale price, confirming that `living_square_feet` is a fundamental predictor of a home's value.
+:::
+
+::: {#fig-performance layout-ncol=1}
+![Model Performance: Actual vs. Predicted Sale Amounts.](visual_3_actual_vs_predicted.jpg){#fig-perf}
+
+This plot evaluates our model's predictive accuracy. The points cluster tightly around the red dashed line (perfect prediction), and the annotated R² of 0.730 confirms our model explains 73% of the variability in sale prices.
+:::
+
+::: {#fig-importance layout-ncol=1}
+![Top 15 Most Influential Features on Sale Amount.](visual_4_feature_importance.jpg){#fig-imp}
+
+This bar chart displays the model's coefficients, quantifying the impact of each feature. Green bars indicate a positive relationship (increasing the price), while red bars indicate a negative one.
+:::
