@@ -1,1 +1,5 @@
-# Background
+# Introduction
+
+For seasoned real estate professionals, the ability to accurately estimate a property's market value and time on the market is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers—be it first-time homebuyers navigating a complex process or new agents striving to build a successful career—this knowledge is not readily available. This project aims to bridge that knowledge gap within Oregon's dynamic housing market by leveraging data science to uncover the key drivers of property valuation.
+
+The central research question guiding this project is: **Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property's final sale price and its time on the market?**. While this paper will focus on predicting the final sale price, the groundwork is laid for a future survival analysis to address the time-on-market component.
