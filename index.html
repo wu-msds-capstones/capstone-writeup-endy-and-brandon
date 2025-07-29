@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -92,7 +93,11 @@ window.Quarto = {
 <meta name="citation_author" content="Brandon Rodriguez-Hernandez">
 <meta name="citation_author" content="Endy Zarate">
 <meta name="citation_language" content="en">
-<meta name="citation_reference" content="citation_title=A guide to backward paper writing for the data sciences;,citation_abstract=Summary In this perspective, we outline a set of best practices for the planning, writing, and revision of scientific papers and other forms of professional communication in the data sciences. We propose a backward approach that begins with clearly identifying the scientific and professional goals motivating the work, followed by a purposeful mapping from those goals to each section of a paper. This approach is motivated by the conviction that manuscript writing can be more effective, efficient, creative, and even enjoyable—particularly for early-career researchers—when the overarching goals of the paper and its individual components are clearly mapped out.;,citation_author=Jon Zelner;,citation_author=Kelly Broen;,citation_author=Ella August;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S2666389921003068;,citation_issue=3;,citation_doi=10.1016/j.patter.2021.100423;,citation_issn=2666-3899;,citation_volume=3;,citation_journal_title=Patterns;">
+<meta name="citation_reference" content="citation_author=RealEstateAPI;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://www.realestateapi.com/;">
+<meta name="citation_reference" content="citation_title=Transaction types - property detail API reference;,citation_author=RealEstateAPI;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://developer.realestateapi.com/reference/transaction-types;">
+<meta name="citation_reference" content="citation_title=Determining the sellability of real estate properties in oregon and optimizing the house search for buyers;,citation_author=Brandon Rodriguez-Hernandez;,citation_author=Endy Zarate;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;">
+<meta name="citation_reference" content="citation_title=Oregon housing market: Prices, trends, forecast 2024-2025;,citation_author=Redfin;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://www.redfin.com/state/Oregon/housing-market;">
+<meta name="citation_reference" content="citation_title=S&amp;amp;amp;p CoreLogic case-shiller u.s. National home price NSA index;,citation_author=S&amp;amp;P Dow Jones Indices;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://www.spglobal.com/spdji/en/indices/indicators/sp-corelogic-case-shiller-us-national-home-price-nsa-index/;">
 </head>
 
 <body>
@@ -169,15 +174,15 @@ window.Quarto = {
 </section>
 <section id="background" class="level1">
 <h1>Background</h1>
-<p>The Oregon housing market provides a compelling case study. In the last year, the state has seen a 0.3% rise in median home prices and a 7.9% increase in housing supply. Yet, the median days on the market has also increased, suggesting a potential shift in market dynamics. [cite_start]By building a predictive model based on a robust set of property features, we can distill these complex market signals into actionable insights, making the market more transparent and navigable for everyone involved[cite: 189].</p>
-<p>[cite_start]Key metrics for evaluating the market include the <strong>Case-Shiller Index</strong>, which tracks home value, and <strong>Days on the Market (DOM)</strong>, the time a property is listed before selling[cite: 181]. Our research seeks to identify the property characteristics that are the most significant predictors of both a property’s final sale price and its DOM.</p>
+<p>The Oregon housing market provides a compelling case study. In the last year, the state has seen a 0.3% rise in median home prices and a 7.9% increase in housing supply <span class="citation" data-cites="oregon_market_data">(<a href="#ref-oregon_market_data" role="doc-biblioref">Redfin 2025</a>)</span>. Yet, the median days on the market has also increased, suggesting a potential shift in market dynamics. By building a predictive model based on a robust set of property features, we can distill these complex market signals into actionable insights, making the market more transparent and navigable for everyone involved.</p>
+<p>Key metrics for evaluating the market include the Case-Shiller Index, which tracks home value, and Days on the Market (DOM), the time a property is listed before selling <span class="citation" data-cites="case_shiller_index">(<a href="#ref-case_shiller_index" role="doc-biblioref">S&amp;P Dow Jones Indices 2025</a>)</span>. Our research seeks to identify the property characteristics that are the most significant predictors of both a property’s final sale price and its DOM.</p>
 </section>
 <section id="methodology" class="level1">
 <h1>Methodology</h1>
 <p>Our approach combines several data science disciplines to create a comprehensive analysis, from data collection to predictive modeling.</p>
 <section id="data-engineering-acquisition" class="level3">
 <h3 class="anchored" data-anchor-id="data-engineering-acquisition">Data Engineering &amp; Acquisition</h3>
-<p>[cite_start]The primary data was sourced from the <strong>RealEstateAPI</strong>, a comprehensive platform offering detailed information across more than 19 distinct property-related tables[cite: 3, 4, 20]. [cite_start]A proportional sampling strategy was employed to collect data on 50,000 unique properties, with the number of properties from each Oregon county weighted by its proportion of the state’s total population[cite: 8, 9]. The raw, multi-table data required significant processing. [cite_start]Tables were joined on the common <code>property_id</code> key to create a single analytical dataset[cite: 68]. This initial dataset contained 77,922 records but revealed missing values in critical columns. For this baseline analysis, we handled this missing data by dropping all rows containing any null values, resulting in a final, complete dataset of 34,507 records. While this method ensures data integrity, we acknowledge its limitations.</p>
+<p>The primary data was sourced from the RealEstateAPI, a comprehensive platform offering detailed information across more than 19 distinct property-related tables <span class="citation" data-cites="realestateapi_main realestateapi_docs">(<a href="#ref-realestateapi_main" role="doc-biblioref">RealEstateAPI 2025b</a>, <a href="#ref-realestateapi_docs" role="doc-biblioref">2025a</a>)</span>. A proportional sampling strategy was employed to collect data on 50,000 unique properties, with the number of properties from each Oregon county weighted by its proportion of the state’s total population. The raw, multi-table data required significant processing. Tables were joined on the common <code>property_id</code> key to create a single analytical dataset. This initial dataset contained 77,922 records but revealed missing values in critical columns. For this baseline analysis, we handled this missing data by dropping all rows containing any null values, resulting in a final, complete dataset of 34,507 records. While this method ensures data integrity, we acknowledge its limitations.</p>
 </section>
 <section id="statistical-thinking-machine-learning" class="level3">
 <h3 class="anchored" data-anchor-id="statistical-thinking-machine-learning">Statistical Thinking &amp; Machine Learning</h3>
@@ -304,8 +309,19 @@ Figure&nbsp;4: This bar chart displays the model’s coefficients, quantifying t
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-realestateapi_docs" class="csl-entry" role="listitem">
+RealEstateAPI. 2025a. <span>“Transaction Types - Property Detail API Reference.”</span> 2025. <a href="https://developer.realestateapi.com/reference/transaction-types">https://developer.realestateapi.com/reference/transaction-types</a>.
+</div>
+<div id="ref-realestateapi_main" class="csl-entry" role="listitem">
+———. 2025b. 2025. <a href="https://www.realestateapi.com/">https://www.realestateapi.com/</a>.
+</div>
+<div id="ref-oregon_market_data" class="csl-entry" role="listitem">
+Redfin. 2025. <span>“Oregon Housing Market: Prices, Trends, Forecast 2024-2025.”</span> 2025. <a href="https://www.redfin.com/state/Oregon/housing-market">https://www.redfin.com/state/Oregon/housing-market</a>.
+</div>
+<div id="ref-case_shiller_index" class="csl-entry" role="listitem">
+S&amp;P Dow Jones Indices. 2025. <span>“S&amp;p CoreLogic Case-Shiller u.s. National Home Price NSA Index.”</span> 2025. <a href="https://www.spglobal.com/spdji/en/indices/indicators/sp-corelogic-case-shiller-us-national-home-price-nsa-index/">https://www.spglobal.com/spdji/en/indices/indicators/sp-corelogic-case-shiller-us-national-home-price-nsa-index/</a>.
+</div>
 </div>
 </section>
 
