@@ -1,4 +1,4 @@
-# Data Visualization
+## Data Visualization
 
 Visualizations are essential for exploring the data, evaluating model performance, and communicating key findings. The following figures tell the story of our data and the model's capabilities.
 
