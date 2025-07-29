@@ -9,19 +9,19 @@ This histogram focuses on the bulk of the Oregon housing market. The distributio
 :::
 
 ::: {#fig-correlation layout-ncol=1}
-![Living Area Shows a Clear Positive Correlation with Sale Amount.](visual_2_living_area_vs_sale_amount.jpg){#fig-corr}
+![Living Area Shows a Clear Positive Correlation with Sale Amount.](visual_2_living_area_vs_sale_amount.png){#fig-corr}
 
 This scatter plot visualizes the relationship between a property's living area and its sale price, confirming that `living_square_feet` is a fundamental predictor of a home's value.
 :::
 
 ::: {#fig-performance layout-ncol=1}
-![Model Performance: Actual vs. Predicted Sale Amounts.](visual_3_actual_vs_predicted.jpg){#fig-perf}
+![Model Performance: Actual vs. Predicted Sale Amounts.](visual_3_actual_vs_predicted.png){#fig-perf}
 
 This plot evaluates our model's predictive accuracy. The points cluster tightly around the red dashed line (perfect prediction), and the annotated R² of 0.730 confirms our model explains 73% of the variability in sale prices.
 :::
 
 ::: {#fig-importance layout-ncol=1}
-![Top 15 Most Influential Features on Sale Amount.](visual_4_feature_importance.jpg){#fig-imp}
+![Top 15 Most Influential Features on Sale Amount.](visual_4_feature_importance.png){#fig-imp}
 
 This bar chart displays the model's coefficients, quantifying the impact of each feature. Green bars indicate a positive relationship (increasing the price), while red bars indicate a negative one.
 :::
