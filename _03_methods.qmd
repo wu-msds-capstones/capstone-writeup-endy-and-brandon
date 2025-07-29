@@ -1,1 +1,12 @@
-# Methods
+# Methodology
+
+Our approach combines several data science disciplines to create a comprehensive analysis, from data collection to predictive modeling.
+
+### Data Engineering & Acquisition
+[cite_start]The primary data was sourced from the **RealEstateAPI**, a comprehensive platform offering detailed information across more than 19 distinct property-related tables[cite: 3, 4, 20]. [cite_start]A proportional sampling strategy was employed to collect data on 50,000 unique properties, with the number of properties from each Oregon county weighted by its proportion of the state's total population[cite: 8, 9]. The raw, multi-table data required significant processing. [cite_start]Tables were joined on the common `property_id` key to create a single analytical dataset[cite: 68]. This initial dataset contained 77,922 records but revealed missing values in critical columns. For this baseline analysis, we handled this missing data by dropping all rows containing any null values, resulting in a final, complete dataset of 34,507 records. While this method ensures data integrity, we acknowledge its limitations.
+
+### Statistical Thinking & Machine Learning
+To understand the data and build a predictive tool, we implemented two forms of regression analysis:
+
+1.  **Ordinary Least Squares (OLS) Regression**: Using the `statsmodels` library, we conducted an OLS analysis to rigorously test which features have a statistically significant impact on sale price and to diagnose potential statistical issues like multicollinearity.
+2.  **Predictive Linear Regression**: Using `scikit-learn`, we trained a linear regression model to predict final sale prices. The dataset was split into an 80% training set and a 20% testing set to provide an unbiased evaluation of the model's performance on new, unseen data. The model's performance was evaluated using R-squared ($R^2$) and Mean Absolute Error (MAE).
