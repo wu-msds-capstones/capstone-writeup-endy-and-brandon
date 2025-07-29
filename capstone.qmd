@@ -1,5 +1,6 @@
-title: "Capstone Project"
-subtitle: Subtitle
+---
+title: "Predicting Real Estate Sale Prices in Oregon: A Data-Driven Approach"
+subtitle: "MSDS Capstone Project"
 authors:
   - Brandon Rodriguez-Hernandez
   - Endy Zarate
@@ -10,6 +11,8 @@ format:
     theme:
       light: lightly
       dark: darkly
+    toc: true
+    toc-location: left
 ---
 
 {{< include _01_intro.qmd >}}
