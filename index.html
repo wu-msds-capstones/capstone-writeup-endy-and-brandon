@@ -169,7 +169,7 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value and time on the market is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers—be it first-time homebuyers navigating a complex process or new agents striving to build a successful career—this knowledge is not readily available. This project aims to bridge that knowledge gap within Oregon’s dynamic housing market by leveraging data science to uncover the key drivers of property valuation.</p>
+<p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value and time on the market is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers,be it first-time homebuyers navigating a complex process or new agents striving to build a successful career, this knowledge is not readily available. This project aims to bridge that knowledge gap within Oregon’s dynamic housing market by leveraging data science to uncover the key drivers of property valuation.</p>
 <p>The central research question guiding this project is: <strong>Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property’s final sale price and its time on the market?</strong>. While this paper will focus on predicting the final sale price, the groundwork is laid for a future survival analysis to address the time-on-market component.</p>
 </section>
 <section id="background" class="level1">
@@ -203,10 +203,10 @@ window.Quarto = {
 <div id="fig-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_1_sale_amount_distribution.png" class="lightbox" data-gallery="fig-distribution" title="Figure&nbsp;1&nbsp;(a): Distribution of Property Sale Amounts (Under $2M)."><img src="visual_1_sale_amount_distribution.png" class="img-fluid figure-img" data-ref-parent="fig-distribution"></a>
+<a href="visual_1_sale_amount_distribution.png" class="lightbox" data-gallery="fig-distribution" title="Figure&nbsp;1&nbsp;(a): Distribution of Property Sale Amounts."><img src="visual_1_sale_amount_distribution.png" class="img-fluid figure-img" data-ref-parent="fig-distribution"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Distribution of Property Sale Amounts (Under $2M).
+(a) Distribution of Property Sale Amounts.
 </figcaption>
 </figure>
 </div>
@@ -304,7 +304,7 @@ Figure&nbsp;4: This bar chart displays the model’s coefficients, quantifying t
 <p>However, the analysis also highlighted significant limitations that provide a clear path for future work. Our statistical tests revealed strong multicollinearity in the feature set, which makes the specific impact of any single feature difficult to isolate. Furthermore, our decision to drop records with missing data, while expedient, resulted in the loss of over half our initial data and may have introduced sampling bias.</p>
 <p>To build upon this foundation and create a more robust and reliable tool, the next steps are clear:</p>
 <ol type="1">
-<li><strong>Improve Data Integrity</strong>: Implement sophisticated imputation techniques (e.g., K-Nearest Neighbors or iterative imputation) to handle missing values, thereby retaining a larger and more representative dataset.</li>
+<li><strong>Improve Data Integrity</strong>: Implement sophisticated imputation techniques to handle missing values, thereby retaining a larger and more representative dataset.</li>
 <li><strong>Address Multicollinearity</strong>: Employ regularization methods such as Ridge or Lasso regression, which are specifically designed to handle multicollinearity and produce more stable and interpretable feature coefficients.</li>
 <li><strong>Advance the Modeling</strong>: Develop more complex, non-linear models, such as Gradient Boosting or Random Forests, to capture more nuanced relationships in the data and likely improve predictive accuracy.</li>
 <li><strong>Complete the Research Question</strong>: Conduct the planned <strong>Survival Analysis</strong> to model the ‘time on market’ component, which will provide a holistic tool for evaluating real estate opportunities in Oregon.</li>

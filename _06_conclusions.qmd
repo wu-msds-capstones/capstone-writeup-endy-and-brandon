@@ -6,7 +6,7 @@ However, the analysis also highlighted significant limitations that provide a cl
 
 To build upon this foundation and create a more robust and reliable tool, the next steps are clear:
 
-1.  **Improve Data Integrity**: Implement sophisticated imputation techniques (e.g., K-Nearest Neighbors or iterative imputation) to handle missing values, thereby retaining a larger and more representative dataset.
+1.  **Improve Data Integrity**: Implement sophisticated imputation techniques to handle missing values, thereby retaining a larger and more representative dataset.
 2.  **Address Multicollinearity**: Employ regularization methods such as Ridge or Lasso regression, which are specifically designed to handle multicollinearity and produce more stable and interpretable feature coefficients.
 3.  **Advance the Modeling**: Develop more complex, non-linear models, such as Gradient Boosting or Random Forests, to capture more nuanced relationships in the data and likely improve predictive accuracy.
 4.  **Complete the Research Question**: Conduct the planned **Survival Analysis** to model the 'time on market' component, which will provide a holistic tool for evaluating real estate opportunities in Oregon.

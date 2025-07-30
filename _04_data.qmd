@@ -3,7 +3,7 @@
 Visualizations are essential for exploring the data, evaluating model performance, and communicating key findings. The following figures tell the story of our data and the model's capabilities.
 
 ::: {#fig-distribution layout-ncol=1}
-![Distribution of Property Sale Amounts (Under $2M).](visual_1_sale_amount_distribution.png){#fig-dist}
+![Distribution of Property Sale Amounts.](visual_1_sale_amount_distribution.png){#fig-dist}
 
 This histogram focuses on the bulk of the Oregon housing market. The distribution is clearly right-skewed, with the highest concentration of properties sold for between $200K and $500K.
 :::
