@@ -1,1 +1,12 @@
-# Conclusions
+# Conclusions & Future Work
+
+This research successfully developed a baseline model for predicting real estate sale prices in Oregon, identifying key value drivers and achieving an R² of 0.73. However, the analysis also highlighted significant limitations, primarily the naive handling of missing data and the presence of multicollinearity in the feature set.
+
+These limitations provide a clear path for future work:
+1.  **Improve Data Integrity**: Implement sophisticated imputation techniques to handle missing values and retain more of the original dataset.
+2.  **Address Multicollinearity**: Employ regularization methods such as Ridge or Lasso regression to create more stable and interpretable coefficients.
+3.  **Advance the Modeling**: Develop more complex, non-linear models, such as Gradient Boosting or Random Forests, to capture more nuanced relationships in the data.
+4.  **Complete the Research Question**: Conduct the planned **Survival Analysis** to model the 'time on market' component, providing a holistic tool for evaluating real estate opportunities.
+
+### Data Ethics
+A commitment to ethical practice was paramount throughout this project. [cite_start]We have prioritized individual privacy by exclusively using publicly available, non-personally identifiable data[cite: 245]. [cite_start]We also acknowledge that real estate data can reflect historical societal biases, and that our data-cleaning choices could introduce sampling bias[cite: 246]. [cite_start]This model is intended as an informational tool, not as a replacement for professional appraisal or financial advice, and its limitations must be clearly communicated to any user[cite: 249].

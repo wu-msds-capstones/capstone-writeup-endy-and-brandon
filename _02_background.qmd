@@ -1,1 +1,5 @@
 # Background
+
+The Oregon housing market provides a compelling case study. In the last year, the state has seen a 0.3% rise in median home prices and a 7.9% increase in housing supply. Yet, the median days on the market has also increased, suggesting a potential shift in market dynamics. [cite_start]By building a predictive model based on a robust set of property features, we can distill these complex market signals into actionable insights, making the market more transparent and navigable for everyone involved[cite: 189].
+
+[cite_start]Key metrics for evaluating the market include the **Case-Shiller Index**, which tracks home value, and **Days on the Market (DOM)**, the time a property is listed before selling[cite: 181]. Our research seeks to identify the property characteristics that are the most significant predictors of both a property's final sale price and its DOM.

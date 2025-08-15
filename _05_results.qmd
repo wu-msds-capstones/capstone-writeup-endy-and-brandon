@@ -1,1 +1,9 @@
 # Results
+
+The machine learning model yielded strong baseline results for predicting property sale prices.
+
+* **Model Performance**: On the unseen test data, our model achieved an **R-squared ($R^2$) of 0.730**. This indicates that our model can explain approximately 73% of the variance in property sale prices. The **Mean Absolute Error (MAE) was $92,834**. This means that, on average, the model's prediction is off by about $92,834.
+
+* **Feature Importance**: As shown in the visualization of the model's coefficients (@fig-imp), the most impactful positive predictor was whether the purchase was financed. Transaction types, such as construction sales and subdivision transfers, also strongly increased the predicted price. The most impactful negative predictors included having RV parking and a balcony.
+
+* **Statistical Findings**: The OLS regression analysis revealed a high **Condition Number** of 9.97e+07, a strong indicator of multicollinearity. This suggests that while the model as a whole is predictive, the specific coefficient for any single feature may be unstable.
