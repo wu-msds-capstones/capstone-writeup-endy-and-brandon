@@ -143,16 +143,33 @@ window.Quarto = {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#conclusions-future-work" id="toc-conclusions-future-work" class="nav-link" data-scroll-target="#conclusions-future-work">Conclusions &amp; Future Work</a></li>
+  <li><a href="#data-acquisition-and-preprocessing" id="toc-data-acquisition-and-preprocessing" class="nav-link" data-scroll-target="#data-acquisition-and-preprocessing">Data Acquisition and Preprocessing</a>
+  <ul class="collapse">
+  <li><a href="#data-sourcing-and-integration" id="toc-data-sourcing-and-integration" class="nav-link" data-scroll-target="#data-sourcing-and-integration">Data Sourcing and Integration</a></li>
+  <li><a href="#data-cleaning-and-filtering" id="toc-data-cleaning-and-filtering" class="nav-link" data-scroll-target="#data-cleaning-and-filtering">Data Cleaning and Filtering</a></li>
+  <li><a href="#imputation" id="toc-imputation" class="nav-link" data-scroll-target="#imputation">Imputation</a></li>
+  <li><a href="#target-variable-transformation" id="toc-target-variable-transformation" class="nav-link" data-scroll-target="#target-variable-transformation">Target Variable Transformation</a></li>
+  </ul></li>
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
   <ul class="collapse">
-  <li><a href="#data-engineering-acquisition" id="toc-data-engineering-acquisition" class="nav-link" data-scroll-target="#data-engineering-acquisition">Data Engineering &amp; Acquisition</a></li>
-  <li><a href="#statistical-thinking-machine-learning" id="toc-statistical-thinking-machine-learning" class="nav-link" data-scroll-target="#statistical-thinking-machine-learning">Statistical Thinking &amp; Machine Learning</a></li>
+  <li><a href="#stage-1-the-baseline-model" id="toc-stage-1-the-baseline-model" class="nav-link" data-scroll-target="#stage-1-the-baseline-model">Stage 1: The Baseline Model</a></li>
+  <li><a href="#stage-2-the-enriched-model" id="toc-stage-2-the-enriched-model" class="nav-link" data-scroll-target="#stage-2-the-enriched-model">Stage 2: The Enriched Model</a></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
   </ul></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#conclusions-future-work" id="toc-conclusions-future-work" class="nav-link" data-scroll-target="#conclusions-future-work">Conclusions &amp; Future Work</a>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#data-ethics" id="toc-data-ethics" class="nav-link" data-scroll-target="#data-ethics">Data Ethics</a></li>
+  <li><a href="#stage-1-the-baseline-model---the-limits-of-physical-attributes" id="toc-stage-1-the-baseline-model---the-limits-of-physical-attributes" class="nav-link" data-scroll-target="#stage-1-the-baseline-model---the-limits-of-physical-attributes">Stage 1: The Baseline Model - The Limits of Physical Attributes</a></li>
+  <li><a href="#stage-2-the-enriched-model---the-power-of-context" id="toc-stage-2-the-enriched-model---the-power-of-context" class="nav-link" data-scroll-target="#stage-2-the-enriched-model---the-power-of-context">Stage 2: The Enriched Model - The Power of Context</a></li>
+  <li><a href="#discussion-from-simple-metrics-to-complex-insights" id="toc-discussion-from-simple-metrics-to-complex-insights" class="nav-link" data-scroll-target="#discussion-from-simple-metrics-to-complex-insights">Discussion: From Simple Metrics to Complex Insights</a></li>
+  </ul></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#conclusions-future-work-1" id="toc-conclusions-future-work-1" class="nav-link" data-scroll-target="#conclusions-future-work-1">Conclusions &amp; Future Work</a>
+  <ul class="collapse">
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
+  </ul></li>
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a>
+  <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -169,28 +186,183 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value and time on the market is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers,be it first-time homebuyers navigating a complex process or new agents striving to build a successful career, this knowledge is not readily available. This project aims to bridge that knowledge gap within Oregon’s dynamic housing market by leveraging data science to uncover the key drivers of property valuation.</p>
-<p>The central research question guiding this project is: <strong>Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property’s final sale price and its time on the market?</strong>. While this paper will focus on predicting the final sale price, the groundwork is laid for a future survival analysis to address the time-on-market component.</p>
+<p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers, be it first-time homebuyers navigating a complex process or new agents striving to build a successful career, this knowledge is not readily available. This project aims to bridge that knowledge gap of homebuying within Oregon’s dynamic housing market by leveraging data science to move beyond intuition and uncover key, quantifiable drivers of property valuation.</p>
+<p>The Oregon housing market provides a compelling and timely case study for this endeavor. The state’s real estate landscape is in a state of flux, characterized by competing signals that can be difficult for non-experts to interpret. In the last year, Oregon has seen a modest 0.3% rise in median home prices, coupled with a significant 7.9% increase in housing supply <span class="citation" data-cites="oregon_market_data">(<a href="#ref-oregon_market_data" role="doc-biblioref">Redfin 2025</a>)</span>. Counterintuitively, the median days on the market has also increased, suggesting a potential cooling or shift in market dynamics. It is within this complex environment that data-driven insights become most valuable.</p>
+<p>Due to the conflicting real estate market, first-time home buyers are in a tricky position. They face increasing home prices in competitive and sought after locations while experiencing economic instability and uncertainty from the current administration <span class="citation" data-cites="feng_romans_2025">(<a href="#ref-feng_romans_2025" role="doc-biblioref"><strong>feng_romans_2025?</strong></a>)</span>. Additionally, the rise in interest rates does not ease buyers’ concerns and may lead them to make uninformed purchases in fear that rates may not decline in the future. They may not realize that their desirable features in a home is what is driving a high price point. Perhaps they could have saved money by compromising and leveraging certain characteristics of a property.</p>
+<p>The central research question guiding this project is therefore: <strong>Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property’s final sale price?</strong></p>
+<p>To answer this question, we undertook a two-stage modeling approach. We first established a Baseline Model using only a property’s intrinsic physical attributes. This initial model, while informative, proved limited in its predictive power. We then developed an Enriched Model that incorporated advanced feature engineering, creating new variables to capture neighborhood context, market seasonality, and property layout efficiencies. By comparing multiple machine learning algorithms, including Ridge Regression, Random Forest, and LightGBM, this approach allowed us to not only dramatically improve predictive accuracy but, more importantly, to interpret the complex interplay of factors that determine a home’s ultimate value. Utilizing our findings, we are able to give general recommendations to first-time home buyers in Oregon.</p>
 </section>
 <section id="background" class="level1">
 <h1>Background</h1>
-<p>The Oregon housing market provides a compelling case study. In the last year, the state has seen a 0.3% rise in median home prices and a 7.9% increase in housing supply <span class="citation" data-cites="oregon_market_data">(<a href="#ref-oregon_market_data" role="doc-biblioref">Redfin 2025</a>)</span>. Yet, the median days on the market has also increased, suggesting a potential shift in market dynamics. By building a predictive model based on a robust set of property features, we can distill these complex market signals into actionable insights, making the market more transparent and navigable for everyone involved.</p>
-<p>Key metrics for evaluating the market include the Case-Shiller Index, which tracks home value, and Days on the Market (DOM), the time a property is listed before selling <span class="citation" data-cites="case_shiller_index">(<a href="#ref-case_shiller_index" role="doc-biblioref">S&amp;P Dow Jones Indices 2025</a>)</span>. Our research seeks to identify the property characteristics that are the most significant predictors of both a property’s final sale price and its DOM.</p>
+<p>Given the current Oregon real estate market and the economic instability, first-time home buyers are becoming increasingly older and rarer. As shown in Figure 1, the median age of the first-time home owner is 38 years old <span class="citation" data-cites="nar_2024">(<a href="#ref-nar_2024" role="doc-biblioref"><strong>nar_2024?</strong></a>)</span>.</p>
+<div id="fig-median-age" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-median-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-median-age" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-age" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="plot.png" class="lightbox" data-gallery="fig-median-age" title="Figure&nbsp;1&nbsp;(a): Median Age of First-Time Homeowners Over the Past 22 Years. The median age of the first-time home owner was fairly consistent for the past 22 years until recent times. Last year’s increase was the highest percentage increase (8%) in the current century."><img src="plot.png" class="img-fluid figure-img" data-ref-parent="fig-median-age"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Median Age of First-Time Homeowners Over the Past 22 Years. The median age of the first-time home owner was fairly consistent for the past 22 years until recent times. Last year’s increase was the highest percentage increase (8%) in the current century.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-median-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+<p>The median age has increased by three years from last year’s median age of 35. Since 2020, the incline has been sharp. If the current median first-time home owner takes the standard 30-year mortgage, they will be paying it off well into retirement. With stock market volatility impacting 401(k)s and ongoing discussions about the future of Social Security, becoming a first-time homeowner at the current median age is an increasingly risky financial decision. Given those issues, first-time home owners are becoming uncommon. First-time home owners make up about 24% of all buyers which is down from last year’s 32% <span class="citation" data-cites="nar_2024">(<a href="#ref-nar_2024" role="doc-biblioref"><strong>nar_2024?</strong></a>)</span>.</p>
+<p>The median household income for the first-time homeowner has increased to $97,000 <span class="citation" data-cites="nar_2024">(<a href="#ref-nar_2024" role="doc-biblioref"><strong>nar_2024?</strong></a>)</span>. Additionally, 73% of all home buyers do not have a child aged 3 or younger. There is a small portion of home buyers that seek out multigenerational homes. Their main reasoning for that is cost savings. They have elderly parents to take care of, children that are moving back home and kids that do not leave the home once they reach adulthood These statistics and reasoning point to rising home prices. Oregon home prices may have only increased by 0.3% in the last year but they have increased significantly in the last five years. The reason for the increase in property value is unfamiliar to the average person or home buyer.</p>
+<p>The process of determining a property’s value is not conducted in a vacuum; it is deeply embedded within the context of the broader real estate market, which is itself influenced by a host of economic forces. To understand the significance of predicting a single property’s price, one must first appreciate the macro-level indicators that define the health and trajectory of the market as a whole.</p>
+<p>A key metric for this high-level view is the S&amp;P CoreLogic Case-Shiller Home Price Index, a well-regarded barometer that tracks changes in residential real estate values to gauge market trends nationally and regionally <span class="citation" data-cites="case_shiller_index">(<a href="#ref-case_shiller_index" role="doc-biblioref">S&amp;P Dow Jones Indices 2025</a>)</span>. While such indices are invaluable for understanding broad market movements, for instance, telling us if the Portland metropolitan area market is generally heating up or cooling down, they do not and cannot explain the price variability at the individual property level. A rising index does not clarify why two similar-sized homes on the same street might sell for vastly different prices. This is the analytical gap our research aims to fill.</p>
+<p>Our project operates on the premise that while market-wide forces set a general price level, the specific, measurable characteristics of a property and its immediate surroundings are what determine its value within that market. We move from a macro to a micro-level analysis to isolate the features that drive these price differences. These features can be grouped into several key domains:</p>
+<ul>
+<li><strong>Physical Attributes:</strong> These are the most intuitive value drivers, including the property’s Living Area (in square feet), the number of Bedrooms and Bathrooms, the total Lot Size, and the Property’s Age.</li>
+<li><strong>Geographical Context:</strong> The classic real estate mantra of “location, location, location” is represented by geographical features like a property’s City and Zip Code. A property’s location dictates its proximity to amenities, school districts, and employment centers, all of which have a profound impact on its desirability and value.</li>
+<li><strong>Socio-Economic Environment:</strong> The financial health of a community, captured by data such as the local Median Household Income, provides crucial context. A strong local economy can bolster property values, while economic distress can suppress them.</li>
+<li><strong>Regulatory Environment:</strong> Factors like local Zoning laws (which dictate what can be built on the property) provide a formal framework that constrains and defines a property’s use.</li>
+</ul>
+<p>By building a statistical model that incorporates features from all these domains, we can effectively deconstruct a final sale price into its component parts. The goal is to quantify the impact of each individual feature: How much value does an extra bathroom add, on average? What is the price premium for a home in Portland versus one in Eugene? This data-driven approach provides a structured, evidence-based alternative to the years of hard-won intuition, creating a tool that can empower first-time home buyers to better understand the forces shaping the Oregon real estate market.</p>
+</section>
+<section id="conclusions-future-work" class="level1">
+<h1>Conclusions &amp; Future Work</h1>
+<p>A commitment to ethical practice was paramount throughout this project. Before detailing our methodology, it is essential to frame our work within the ethical dimensions of data handling, algorithmic fairness, and responsible use.</p>
+<ul>
+<li><strong>Privacy and Data Handling:</strong> We have prioritized individual privacy by exclusively using property-level data. While the raw data source contained personally identifiable information such as owner names, this information was explicitly excluded from our analytical dataset at the earliest stage. Our focus remained squarely on the structural, transactional, and geographical characteristics of the properties themselves, the <em>what</em> and <em>where</em>, not the <em>who</em>.</li>
+<li><strong>Algorithmic Bias and Fairness:</strong> We acknowledge that real estate data is not neutral; it is a social artifact that can reflect and perpetuate historical societal biases. An algorithm trained on this data could inadvertently learn and amplify these patterns. We recognize that historical sale prices are a product of market forces that may include discriminatory practices. We therefore present our model’s predictions not as an objective truth, but as a reflection of the patterns present in the available historical data.</li>
+<li><strong>Transparency and Responsible Use:</strong> Recognizing the potential for misuse, we emphasize that this model is intended as an informational tool, not as a definitive arbiter of property value or as a replacement for professional appraisal. With a final Mean Absolute Error of approximately $84,000, the predictions should be understood as data-driven estimates with a known margin of error. The model’s output should be interpreted as a ballpark estimate or a data-driven starting point for further research, not as a precise quote.</li>
+</ul>
+</section>
+<section id="data-acquisition-and-preprocessing" class="level1">
+<h1>Data Acquisition and Preprocessing</h1>
+<p>The foundation of this analysis rests upon the systematic acquisition and meticulous preparation of a complex, multi-source dataset.</p>
+<section id="data-sourcing-and-integration" class="level3">
+<h3 class="anchored" data-anchor-id="data-sourcing-and-integration">Data Sourcing and Integration</h3>
+<p>The data for this project was sourced from the RealEstateAPI <span class="citation" data-cites="realestateapi_main">(<a href="#ref-realestateapi_main" role="doc-biblioref">RealEstateAPI 2025b</a>)</span>, a comprehensive platform providing granular real estate data. The core dataset, containing sales transactions, was strategically enriched with data from four other key tables: Property Information, Lot Information, Tax Information, and Demographics. A critical methodological decision was the explicit exclusion of certain datasets, such as those containing official Assessed Value, as this would constitute target leakage and lead to a misleadingly accurate model.</p>
+</section>
+<section id="data-cleaning-and-filtering" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning-and-filtering">Data Cleaning and Filtering</h3>
+<p>Before cleaning the dataset, we wanted to conduct some exploratory data analysis to understand what was happening in our data and to check that it was read-in correctly.</p>
+<p>We noticed an interesting feature in our dataset called <code>property_use</code> which defined the primary usage of each property. With a simple SQL code, we were able to see the unique values in that column. Then, we noticed that not all properties in our dataset would be relevant to our analysis. As shown in Figure 2, in our dataset, there exists numerous properties that are not suitable for first-time home buyers. These properties include parking lots, restaurant spaces, agricultural land and much more. We determined that, since our project focuses on interests of first-time home buyers, we should run our analysis and models on single family residential properties.</p>
+<div id="fig-property-use" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-property-use-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-property-use" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-prop-use" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-prop-use-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="filter_error.png" class="lightbox" data-gallery="fig-property-use" title="Figure&nbsp;2&nbsp;(a): Count of Single Family Residential Properties Against Other Uses. There are over 20,000 properties in our dataset that are not single family residential properties which are our main focus. Null values appear in a very small amount of properties."><img src="filter_error.png" class="img-fluid figure-img" data-ref-parent="fig-property-use"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-prop-use-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Count of Single Family Residential Properties Against Other Uses. There are over 20,000 properties in our dataset that are not single family residential properties which are our main focus. Null values appear in a very small amount of properties.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-property-use-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+<p>While a large portion of our initial data was not relevant to our analysis, we still had thousands of observations and properties to work with. Therefore, the data was filtered to include only Single-Family Homes and arms-length transactions. Arms-length transactions are fair market sales between unrelated parties <span class="citation" data-cites="realestateapi_docs">(<a href="#ref-realestateapi_docs" role="doc-biblioref">RealEstateAPI 2025a</a>)</span>. By filtering on those transactions, we can remove some of the bias in our dataset as transactions between related parties may undermine the prices of the current market. After removing records with invalid data, the dataset contained 21,720 unique sale records.</p>
+</section>
+<section id="imputation" class="level3">
+<h3 class="anchored" data-anchor-id="imputation">Imputation</h3>
+<p>A significant challenge was the presence of missing values. Instead of dropping incomplete rows, a robust imputation strategy was implemented. Missing numerical values were filled using a statistically sound median-based approach, while missing categorical data was filled with the label ‘Unknown’. This approach allowed us to preserve the vast majority of our collected data.</p>
+</section>
+<section id="target-variable-transformation" class="level3">
+<h3 class="anchored" data-anchor-id="target-variable-transformation">Target Variable Transformation</h3>
+<p>We shifted our exploratory data analysis to our target variable to check on any concerning insights. As shown on Figure 3, our <code>sale_amount</code> target variable had a large range.</p>
+<div id="fig-sale-dist" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sale-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sale-dist" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-sale-dist-full" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sale-dist-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="skew.png" class="lightbox" data-gallery="fig-sale-dist" title="Figure&nbsp;3&nbsp;(a): A Histogram Distribution of our Target Variable, Sale Amount. The range of sale_amount is huge. There are several properties that have sold for over $2 million dollars."><img src="skew.png" class="img-fluid figure-img" data-ref-parent="fig-sale-dist"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sale-dist-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) A Histogram Distribution of our Target Variable, Sale Amount. The range of sale_amount is huge. There are several properties that have sold for over $2 million dollars.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-sale-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3
+</figcaption>
+</figure>
+</div>
+<p>The range seems atypical for single family residential properties. There are numerous outliers in our data and it is concerning that it is spread out among the millions of dollars as it might create a bias in our data. We explored deeper into this matter by zooming in to the histogram as shown in Figure 4.</p>
+<div id="fig-sale-zoom" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sale-zoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sale-zoom" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-sale-dist-zoom" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sale-dist-zoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="outliers.png" class="lightbox" data-gallery="fig-sale-zoom" title="Figure&nbsp;4&nbsp;(a): An Enhanced Histogram Distribution of our Target Variable, Sale Amount. Data is right-skewed despite the large amount of outliers."><img src="outliers.png" class="img-fluid figure-img" data-ref-parent="fig-sale-zoom"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sale-dist-zoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) An Enhanced Histogram Distribution of our Target Variable, Sale Amount. Data is right-skewed despite the large amount of outliers.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-sale-zoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption>
+</figure>
+</div>
+<p>This revealed a strong positive right skew in the Sale Amount variable that it undermines Oregon’s housing market. To meet the assumptions of regression modeling, a logarithmic transformation (<code>np.log1p</code>) was applied, resulting in a normalized distribution suitable for analysis.</p>
+</section>
 </section>
 <section id="methodology" class="level1">
 <h1>Methodology</h1>
-<p>Our approach combines several data science disciplines to create a comprehensive analysis, from data collection to predictive modeling.</p>
-<section id="data-engineering-acquisition" class="level3">
-<h3 class="anchored" data-anchor-id="data-engineering-acquisition">Data Engineering &amp; Acquisition</h3>
-<p>The primary data was sourced from the RealEstateAPI, a comprehensive platform offering detailed information across more than 19 distinct property-related tables <span class="citation" data-cites="realestateapi_main realestateapi_docs">(<a href="#ref-realestateapi_main" role="doc-biblioref">RealEstateAPI 2025b</a>, <a href="#ref-realestateapi_docs" role="doc-biblioref">2025a</a>)</span>. A proportional sampling strategy was employed to collect data on 50,000 unique properties, with the number of properties from each Oregon county weighted by its proportion of the state’s total population. The raw, multi-table data required significant processing. Tables were joined on the common <code>property_id</code> key to create a single analytical dataset. This initial dataset contained 77,922 records but revealed missing values in critical columns. For this baseline analysis, we handled this missing data by dropping all rows containing any null values, resulting in a final, complete dataset of 34,507 records. While this method ensures data integrity, we acknowledge its limitations.</p>
+<p>Our analysis was structured in two stages to clearly demonstrate the value of advanced feature engineering <span class="citation" data-cites="project_proposal">(<a href="#ref-project_proposal" role="doc-biblioref">Rodriguez-Hernandez and Zarate 2025</a>)</span>.</p>
+<section id="stage-1-the-baseline-model" class="level3">
+<h3 class="anchored" data-anchor-id="stage-1-the-baseline-model">Stage 1: The Baseline Model</h3>
+<p>The initial stage focused on creating a simple, interpretable baseline.</p>
+<ul>
+<li><strong>Features:</strong> This model was trained using only five core physical attributes: Living Area, Lot Size, Bedrooms, Bathrooms, and Property Age.</li>
+<li><strong>Model:</strong> A standard RandomForestRegressor was used to establish a performance benchmark.</li>
+</ul>
 </section>
-<section id="statistical-thinking-machine-learning" class="level3">
-<h3 class="anchored" data-anchor-id="statistical-thinking-machine-learning">Statistical Thinking &amp; Machine Learning</h3>
-<p>To understand the data and build a predictive tool, we implemented two forms of regression analysis:</p>
-<ol type="1">
-<li><strong>Ordinary Least Squares (OLS) Regression</strong>: Using the <code>statsmodels</code> library, we conducted an OLS analysis to rigorously test which features have a statistically significant impact on sale price and to diagnose potential statistical issues like multicollinearity.</li>
-<li><strong>Predictive Linear Regression</strong>: Using <code>scikit-learn</code>, we trained a linear regression model to predict final sale prices. The dataset was split into an 80% training set and a 20% testing set to provide an unbiased evaluation of the model’s performance on new, unseen data. The model’s performance was evaluated using R-squared (<span class="math inline">\(R^2\)</span>) and Mean Absolute Error (MAE).</li>
-</ol>
+<section id="stage-2-the-enriched-model" class="level3">
+<h3 class="anchored" data-anchor-id="stage-2-the-enriched-model">Stage 2: The Enriched Model</h3>
+<p>The second stage aimed to maximize predictive power by creating a rich set of contextual features.</p>
+<ul>
+<li><p><strong>Advanced Feature Engineering:</strong> We engineered several new categories of features:</p>
+<ul>
+<li><strong>Time-Based Features:</strong> <code>sale_month</code> and <code>sale_quarter</code> were extracted to capture market seasonality.</li>
+<li><strong>Ratio Features:</strong> <code>bathroom-to-bedroom</code> ratio and <code>garage-to-living-area</code> ratio were created to provide insights into property layout and utility.</li>
+<li><strong>Neighborhood Aggregate Features:</strong> In a crucial step to prevent data leakage, a custom transformer was built into our pipeline. This transformer calculates the median living area and median property age for each zip code using only the training data and then maps these values to the test set. This provides powerful, and localized context for each property.</li>
+</ul></li>
+<li><p><strong>Model Selection:</strong> We implemented a comparative approach using three distinct algorithms:</p>
+<ul>
+<li><strong>Ridge Regression:</strong> A regularized linear model serving as a robust, enhanced baseline.</li>
+<li><strong>Random Forest Regressor:</strong> A powerful ensemble model effective at capturing non-linear relationships.</li>
+<li><strong>LightGBM Regressor:</strong> A highly efficient, state-of-the-art gradient boosting model, often considered the industry standard for tabular data.</li>
+</ul></li>
+<li><p><strong>Model Training and Validation:</strong> The dataset was partitioned into an 80% training set and a 20% testing set. All models were trained within a scikit-learn Pipeline that handled all preprocessing steps, including imputation, scaling, and encoding, to ensure a robust and leak-proof workflow. Hyperparameter tuning was performed using GridSearchCV and RandomizedSearchCV.</p></li>
+<li><p><strong>Evaluation Metrics:</strong> Model performance was quantified using two standard metrics: R-squared (<span class="math inline">\(R^2\)</span>), which measures the proportion of price variance explained by the model, and Mean Absolute Error (MAE), which provides the average prediction error in dollars.</p></li>
+</ul>
 </section>
 <section id="data-visualization" class="level2">
 <h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
@@ -203,7 +375,7 @@ window.Quarto = {
 <div id="fig-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_1_sale_amount_distribution.png" class="lightbox" data-gallery="fig-distribution" title="Figure&nbsp;1&nbsp;(a): Distribution of Property Sale Amounts."><img src="visual_1_sale_amount_distribution.png" class="img-fluid figure-img" data-ref-parent="fig-distribution"></a>
+<a href="visual_1_sale_amount_distribution.png" class="lightbox" data-gallery="fig-distribution" title="Figure&nbsp;5&nbsp;(a): Distribution of Property Sale Amounts."><img src="visual_1_sale_amount_distribution.png" class="img-fluid figure-img" data-ref-parent="fig-distribution"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Distribution of Property Sale Amounts.
@@ -214,7 +386,7 @@ window.Quarto = {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: This histogram focuses on the bulk of the Oregon housing market. The distribution is clearly right-skewed, with the highest concentration of properties sold for between $200K and $500K.
+Figure&nbsp;5: This histogram focuses on the bulk of the Oregon housing market. The distribution is clearly right-skewed, with the highest concentration of properties sold for between $200K and $500K.
 </figcaption>
 </figure>
 </div>
@@ -226,7 +398,7 @@ Figure&nbsp;1: This histogram focuses on the bulk of the Oregon housing market. 
 <div id="fig-corr" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_2_living_area_vs_sale_amount.png" class="lightbox" data-gallery="fig-correlation" title="Figure&nbsp;2&nbsp;(a): Living Area Shows a Clear Positive Correlation with Sale Amount."><img src="visual_2_living_area_vs_sale_amount.png" class="img-fluid figure-img" data-ref-parent="fig-correlation"></a>
+<a href="visual_2_living_area_vs_sale_amount.png" class="lightbox" data-gallery="fig-correlation" title="Figure&nbsp;6&nbsp;(a): Living Area Shows a Clear Positive Correlation with Sale Amount."><img src="visual_2_living_area_vs_sale_amount.png" class="img-fluid figure-img" data-ref-parent="fig-correlation"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Living Area Shows a Clear Positive Correlation with Sale Amount.
@@ -237,7 +409,7 @@ Figure&nbsp;1: This histogram focuses on the bulk of the Oregon housing market. 
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: This scatter plot visualizes the relationship between a property’s living area and its sale price, confirming that <code>living_square_feet</code> is a fundamental predictor of a home’s value.
+Figure&nbsp;6: This scatter plot visualizes the relationship between a property’s living area and its sale price, confirming that <code>living_square_feet</code> is a fundamental predictor of a home’s value.
 </figcaption>
 </figure>
 </div>
@@ -249,7 +421,7 @@ Figure&nbsp;2: This scatter plot visualizes the relationship between a property�
 <div id="fig-perf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_3_actual_vs_predicted.png" class="lightbox" data-gallery="fig-performance" title="Figure&nbsp;3&nbsp;(a): Model Performance: Actual vs.&nbsp;Predicted Sale Amounts."><img src="visual_3_actual_vs_predicted.png" class="img-fluid figure-img" data-ref-parent="fig-performance"></a>
+<a href="visual_3_actual_vs_predicted.png" class="lightbox" data-gallery="fig-performance" title="Figure&nbsp;7&nbsp;(a): Model Performance: Actual vs.&nbsp;Predicted Sale Amounts."><img src="visual_3_actual_vs_predicted.png" class="img-fluid figure-img" data-ref-parent="fig-performance"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Model Performance: Actual vs.&nbsp;Predicted Sale Amounts.
@@ -260,7 +432,7 @@ Figure&nbsp;2: This scatter plot visualizes the relationship between a property�
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: This plot evaluates our model’s predictive accuracy. The points cluster tightly around the red dashed line (perfect prediction), and the annotated R² of 0.730 confirms our model explains 73% of the variability in sale prices.
+Figure&nbsp;7: This plot evaluates our model’s predictive accuracy. The points cluster tightly around the red dashed line (perfect prediction), and the annotated R² of 0.730 confirms our model explains 73% of the variability in sale prices.
 </figcaption>
 </figure>
 </div>
@@ -272,7 +444,7 @@ Figure&nbsp;3: This plot evaluates our model’s predictive accuracy. The points
 <div id="fig-imp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-imp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_4_feature_importance.png" class="lightbox" data-gallery="fig-importance" title="Figure&nbsp;4&nbsp;(a): Top 15 Most Influential Features on Sale Amount."><img src="visual_4_feature_importance.png" class="img-fluid figure-img" data-ref-parent="fig-importance"></a>
+<a href="visual_4_feature_importance.png" class="lightbox" data-gallery="fig-importance" title="Figure&nbsp;8&nbsp;(a): Top 15 Most Influential Features on Sale Amount."><img src="visual_4_feature_importance.png" class="img-fluid figure-img" data-ref-parent="fig-importance"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-imp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Top 15 Most Influential Features on Sale Amount.
@@ -283,7 +455,7 @@ Figure&nbsp;3: This plot evaluates our model’s predictive accuracy. The points
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: This bar chart displays the model’s coefficients, quantifying the impact of each feature. Green bars indicate a positive relationship (increasing the price), while red bars indicate a negative one.
+Figure&nbsp;8: This bar chart displays the model’s coefficients, quantifying the impact of each feature. Green bars indicate a positive relationship (increasing the price), while red bars indicate a negative one.
 </figcaption>
 </figure>
 </div>
@@ -291,48 +463,135 @@ Figure&nbsp;4: This bar chart displays the model’s coefficients, quantifying t
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
-<p>The machine learning model yielded strong baseline results for predicting property sale prices.</p>
+<p>The two-stage analysis yielded a clear and compelling narrative about the power of contextual data.</p>
+<section id="stage-1-the-baseline-model---the-limits-of-physical-attributes" class="level3">
+<h3 class="anchored" data-anchor-id="stage-1-the-baseline-model---the-limits-of-physical-attributes">Stage 1: The Baseline Model - The Limits of Physical Attributes</h3>
+<p>The baseline model, relying only on physical attributes, produced modest results. The top performing model for this dataset was the Random Forest Regressor.</p>
 <ul>
-<li><p><strong>Model Performance</strong>: On the unseen test data, our model achieved an <strong>R-squared (<span class="math inline">\(R^2\)</span>) of 0.730</strong>. This indicates that our model can explain approximately 73% of the variance in property sale prices. The <strong>Mean Absolute Error (MAE) was $92,834</strong>. This means that, on average, the model’s prediction is off by about $92,834.</p></li>
-<li><p><strong>Feature Importance</strong>: As shown in the visualization of the model’s coefficients (<a href="#fig-imp" class="quarto-xref">Figure&nbsp;4 (a)</a>), the most impactful positive predictor was whether the purchase was financed. Transaction types, such as construction sales and subdivision transfers, also strongly increased the predicted price. The most impactful negative predictors included having RV parking and a balcony.</p></li>
-<li><p><strong>Statistical Findings</strong>: The OLS regression analysis revealed a high <strong>Condition Number</strong> of 9.97e+07, a strong indicator of multicollinearity. This suggests that while the model as a whole is predictive, the specific coefficient for any single feature may be unstable.</p></li>
+<li><strong>Performance:</strong> It achieved an R-squared of 0.327, explaining just under a third of the price variance. The Mean Absolute Error was $136,414.</li>
+<li><strong>Feature Importance:</strong> The model’s feature importance plot (Figure 5) shows that it relied almost exclusively on Living Area and Property Age. This result highlights a fundamental flaw: the model treats a 2,000-square-foot house in a high-income Portland suburb identically to one in a rural, low-income area. This lack of context is the primary reason for its limited accuracy.</li>
+</ul>
+<div id="fig-baseline-importance" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-baseline-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-baseline-importance" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-baseline" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-baseline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="baseline_feature_importances.png" class="lightbox" data-gallery="fig-baseline-importance" title="Figure&nbsp;9&nbsp;(a): Baseline Model Feature Importances. In a model using only physical attributes, Living Area is the overwhelmingly dominant predictor."><img src="baseline_feature_importances.png" class="img-fluid figure-img" data-ref-parent="fig-baseline-importance"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-baseline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Baseline Model Feature Importances. In a model using only physical attributes, Living Area is the overwhelmingly dominant predictor.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-baseline-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="stage-2-the-enriched-model---the-power-of-context" class="level3">
+<h3 class="anchored" data-anchor-id="stage-2-the-enriched-model---the-power-of-context">Stage 2: The Enriched Model - The Power of Context</h3>
+<p>The introduction of advanced features led to a dramatic and unequivocal improvement in performance. The final results for the enriched models are summarized in Table 1.</p>
+<p><strong>Table 1: Enriched Model Performance on Test Data</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 28%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Test R-squared (<span class="math inline">\(R^2\)</span>)</th>
+<th style="text-align: left;">Test Mean Absolute Error (MAE)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LightGBM Regressor</td>
+<td style="text-align: left;">0.632</td>
+<td style="text-align: left;">$84,255</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RandomForest Regressor</td>
+<td style="text-align: left;">0.611</td>
+<td style="text-align: left;">$89,591</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ridge Regression</td>
+<td style="text-align: left;">0.476</td>
+<td style="text-align: left;">$113,377</td>
+</tr>
+</tbody>
+</table>
+<p>The best-performing model, LightGBM, achieved an R-squared of 0.632, nearly doubling the explanatory power of the baseline. The MAE dropped by over $52,000 to just $84,255. This substantial improvement is a direct result of providing the model with the necessary context. The most compelling evidence comes from the new feature importance plot (Figure 6).</p>
+<div id="fig-enriched-importance" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-enriched-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-enriched-importance" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-enriched" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-enriched-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="enriched_feature_importances.png" class="lightbox" data-gallery="fig-enriched-importance" title="Figure&nbsp;10&nbsp;(a): Enriched Model Feature Importances. With contextual data, the model’s focus shifts. While Living Area remains critical, engineered features like Neighborhood Median Area and Property Age now play a much more significant role."><img src="enriched_feature_importances.png" class="img-fluid figure-img" data-ref-parent="fig-enriched-importance"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-enriched-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Enriched Model Feature Importances. With contextual data, the model’s focus shifts. While Living Area remains critical, engineered features like Neighborhood Median Area and Property Age now play a much more significant role.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-enriched-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="discussion-from-simple-metrics-to-complex-insights" class="level3">
+<h3 class="anchored" data-anchor-id="discussion-from-simple-metrics-to-complex-insights">Discussion: From Simple Metrics to Complex Insights</h3>
+<p>The journey from the Baseline to the Enriched Model tells a clear story. The rise of engineered features like Median Neighborhood Area and the continued importance of Property Age and Living Area in the feature importance plot is the key finding of this research. It provides quantitative proof that the socio-economic health of a neighborhood and its defining characteristics are just as critical as the physical structure of the house itself. The model learned that a smaller home in a desirable neighborhood is often worth more than a larger home in a less sought-after area. In essence, the supplementary data provided the <em>why</em> behind the price.</p>
+</section>
+</section>
+<section id="limitations" class="level1">
+<h1>Limitations</h1>
+<p>While this study successfully developed a methodologically sound model, it is crucial to acknowledge its limitations. The final R-squared value of 0.632 indicates that approximately 37% of the variability in Oregon’s home prices remains unexplained by our model. This is not a failure but an important finding about the inherent complexity of the real estate market. Several factors contribute to this:</p>
+<ul>
+<li><strong>Unobserved Variables (The Last Mile Problem):</strong> Our dataset does not capture critical factors like interior condition, quality of finishes, recent renovations, or curb appeal. These variables constitute a significant portion of the remaining unexplained variance.</li>
+<li><strong>Market Dynamics and Human Factors:</strong> A final sale price is the result of a negotiation influenced by factors like seller motivation, buyer sentiment, and the specific competitive landscape at the moment of sale. These elements are highly stochastic and cannot be fully captured by static features.</li>
+<li><strong>Data Granularity:</strong> While we incorporated zip code-level data, more granular information, such as specific school district ratings or hyper-local crime statistics, could further improve performance.</li>
 </ul>
 </section>
-<section id="conclusions-future-work" class="level1">
+<section id="conclusions-future-work-1" class="level1">
 <h1>Conclusions &amp; Future Work</h1>
-<p>This research successfully developed a baseline model for predicting real estate sale prices in Oregon, identifying key value drivers and achieving an R² of 0.73. Our analysis confirmed that physical characteristics like living area, as well as transactional details like the purchase method, are significant predictors of a property’s final sale price.</p>
-<p>However, the analysis also highlighted significant limitations that provide a clear path for future work. Our statistical tests revealed strong multicollinearity in the feature set, which makes the specific impact of any single feature difficult to isolate. Furthermore, our decision to drop records with missing data, while expedient, resulted in the loss of over half our initial data and may have introduced sampling bias.</p>
-<p>To build upon this foundation and create a more robust and reliable tool, the next steps are clear:</p>
-<ol type="1">
-<li><strong>Improve Data Integrity</strong>: Implement sophisticated imputation techniques to handle missing values, thereby retaining a larger and more representative dataset.</li>
-<li><strong>Address Multicollinearity</strong>: Employ regularization methods such as Ridge or Lasso regression, which are specifically designed to handle multicollinearity and produce more stable and interpretable feature coefficients.</li>
-<li><strong>Advance the Modeling</strong>: Develop more complex, non-linear models, such as Gradient Boosting or Random Forests, to capture more nuanced relationships in the data and likely improve predictive accuracy.</li>
-<li><strong>Complete the Research Question</strong>: Conduct the planned <strong>Survival Analysis</strong> to model the ‘time on market’ component, which will provide a holistic tool for evaluating real estate opportunities in Oregon.</li>
-</ol>
-<section id="data-ethics" class="level3">
-<h3 class="anchored" data-anchor-id="data-ethics">Data Ethics</h3>
-<p>A commitment to ethical practice was paramount throughout this project, ensuring that our analysis provides valuable insights responsibly, fairly, and transparently. We addressed several key ethical dimensions:</p>
-<section id="privacy-and-data-handling" class="level4">
-<h4 class="anchored" data-anchor-id="privacy-and-data-handling">Privacy and Data Handling</h4>
-<p>We have prioritized individual privacy by exclusively using property-level data and avoiding any sensitive, non-public information. While the raw data source contained owner names, this information was explicitly excluded from our analytical dataset and modeling process to protect the privacy of individuals. Our focus remained on the structural and transactional characteristics of the properties themselves, not the people who own them.</p>
-</section>
-<section id="algorithmic-bias-and-fairness" class="level4">
-<h4 class="anchored" data-anchor-id="algorithmic-bias-and-fairness">Algorithmic Bias and Fairness</h4>
-<p>We acknowledge that real estate data is not neutral; it can reflect and perpetuate historical societal biases, such as those stemming from redlining or socio-economic disparities. Our model could inadvertently learn and amplify these patterns. We took the following points into consideration:</p>
+<p>This research successfully developed a predictive model that explains 63.2% of the variance in Oregon real estate sale prices. Our iterative modeling process demonstrated that while a property’s physical attributes provide a reasonable baseline, the most significant gains in predictive power come from advanced feature engineering, particularly the creation of features that provide local neighborhood context.</p>
+<p>The primary conclusion is that a property’s value is a multifaceted interplay between its physical attributes (led by Living Area), its geographical context (powerfully captured by our engineered neighborhood statistics), and its age. The journey from a model that could only explain 33% of price variance to one that could explain over 63% is a powerful, quantitative confirmation of the real estate axiom that value is determined by more than just the house itself.</p>
+<p>First-time home buyers should take into consideration the most influential property factors when researching home listings and before making purchase decisions. Living area was the most significant indicator of final sale price in our dataset. Housing prices are high and continue to climb so first-time home buyers can take solace in the fact that they can opt for a cheaper and smaller home without compromising on other desired features such as bedroom or bathroom count. Newer properties have higher sale prices as well as properties from affluent neighborhoods.</p>
+<p>These important indicators have complex relationships with each other and several other factors that we could not include in our analysis. It is up to the first time home buyer to decide what property characteristics truly matter to them. Perhaps they will come to the conclusion they need to increase their search budget. While the median age of the first time home owner remains high, knowledge about the current real estate market is something within the control of the buyer and it is their most powerful tool as they approach the important milestone of home buying.</p>
+<section id="future-work" class="level3">
+<h3 class="anchored" data-anchor-id="future-work">Future Work</h3>
+<p>Several avenues for future research are apparent:</p>
 <ul>
-<li><strong>Historical Bias:</strong> The sale prices in our dataset are a product of historical market forces. Our model, by learning from this data, may implicitly carry forward biases related to neighborhood demographics or historical underinvestment in certain communities.</li>
-<li><strong>Sampling and Measurement Bias:</strong> Our decision to handle missing data by dropping incomplete records presents a significant ethical consideration. If data is more likely to be missing for properties in rural or lower-income areas, our final dataset of 34,507 properties may not be fully representative of the entire state. This could lead to a model that is less accurate for these underrepresented groups, potentially creating an inequitable tool. Future work must address this with more sophisticated imputation methods.</li>
-</ul>
-</section>
-<section id="transparency-and-responsible-use" class="level4">
-<h4 class="anchored" data-anchor-id="transparency-and-responsible-use">Transparency and Responsible Use</h4>
-<p>Recognizing the potential for misuse, we emphasize that this model is intended as an <strong>informational tool</strong>, not as a definitive arbiter of property value or as a replacement for professional appraisal and financial advice.</p>
-<ul>
-<li><strong>Transparency:</strong> We are transparent about the model’s performance and limitations. With a Mean Absolute Error of approximately <strong>$92,834</strong>, the predictions should be understood as data-driven estimates with a known margin of error, not as exact figures.</li>
-<li><strong>Intended Use:</strong> The goal is to empower newcomers to the real estate market with better information. However, we recognize the potential for misuse, such as by institutional investors to make predatory offers or to accelerate gentrification in certain neighborhoods. Therefore, we stress that the model’s outputs should always be used in conjunction with professional human judgment and a qualitative understanding of the local context.</li>
+<li><strong>Survival Analysis for Time on Market:</strong> The next logical step is to conduct a survival analysis to model the time a property spends on the market, addressing not only <em>how much?</em> but also <em>how long?</em>.</li>
+<li><strong>Incorporate Time-Series Data:</strong> Incorporating time-series data, such as historical interest rates or changes in local housing inventory, would allow the model to adapt to changing market conditions.</li>
+<li><strong>Granular Geospatial Features:</strong> To address the unobserved variables limitation, future iterations could benefit from integrating data on specific school district ratings, proximity to parks, or local crime rates to capture neighborhood-level nuances and further enhance predictive accuracy.</li>
 </ul>
 </section>
 </section>
+<section id="introduction-1" class="level1">
+<h1>Introduction</h1>
+<p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers, be it first-time homebuyers navigating a complex process or new agents striving to build a successful career, this knowledge is not readily available. This project aims to bridge that knowledge gap of homebuying within Oregon’s dynamic housing market by leveraging data science to move beyond intuition and uncover key, quantifiable drivers of property valuation.</p>
+<p>The Oregon housing market provides a compelling and timely case study for this endeavor. The state’s real estate landscape is in a state of flux, characterized by competing signals that can be difficult for non-experts to interpret. In the last year, Oregon has seen a modest 0.3% rise in median home prices, coupled with a significant 7.9% increase in housing supply <span class="citation" data-cites="oregon_market_data">(<a href="#ref-oregon_market_data" role="doc-biblioref">Redfin 2025</a>)</span>. Counterintuitively, the median days on the market has also increased, suggesting a potential cooling or shift in market dynamics. It is within this complex environment that data-driven insights become most valuable.</p>
+<p>Due to the conflicting real estate market, first-time home buyers are in a tricky position. They face increasing home prices in competitive and sought after locations while experiencing economic instability and uncertainty from the current administration <span class="citation" data-cites="feng_romans_2025">(<a href="#ref-feng_romans_2025" role="doc-biblioref"><strong>feng_romans_2025?</strong></a>)</span>. Additionally, the rise in interest rates does not ease buyers’ concerns and may lead them to make uninformed purchases in fear that rates may not decline in the future. They may not realize that their desirable features in a home is what is driving a high price point. Perhaps they could have saved money by compromising and leveraging certain characteristics of a property.</p>
+<p>The central research question guiding this project is therefore: <strong>Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property’s final sale price?</strong></p>
+<p>To answer this question, we undertook a two-stage modeling approach. We first established a Baseline Model using only a property’s intrinsic physical attributes. This initial model, while informative, proved limited in its predictive power. We then developed an Enriched Model that incorporated advanced feature engineering, creating new variables to capture neighborhood context, market seasonality, and property layout efficiencies. By comparing multiple machine learning algorithms, including Ridge Regression, Random Forest, and LightGBM, this approach allowed us to not only dramatically improve predictive accuracy but, more importantly, to interpret the complex interplay of factors that determine a home’s ultimate value. Utilizing our findings, we are able to give general recommendations to first-time home buyers in Oregon.</p>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -344,6 +603,9 @@ RealEstateAPI. 2025a. <span>“Transaction Types - Property Detail API Reference
 </div>
 <div id="ref-oregon_market_data" class="csl-entry" role="listitem">
 Redfin. 2025. <span>“Oregon Housing Market: Prices, Trends, Forecast 2024-2025.”</span> 2025. <a href="https://www.redfin.com/state/Oregon/housing-market">https://www.redfin.com/state/Oregon/housing-market</a>.
+</div>
+<div id="ref-project_proposal" class="csl-entry" role="listitem">
+Rodriguez-Hernandez, Brandon, and Endy Zarate. 2025. <span>“Determining the Sellability of Real Estate Properties in Oregon and Optimizing the House Search for Buyers.”</span>
 </div>
 <div id="ref-case_shiller_index" class="csl-entry" role="listitem">
 S&amp;P Dow Jones Indices. 2025. <span>“S&amp;p CoreLogic Case-Shiller u.s. National Home Price NSA Index.”</span> 2025. <a href="https://www.spglobal.com/spdji/en/indices/indicators/sp-corelogic-case-shiller-us-national-home-price-nsa-index/">https://www.spglobal.com/spdji/en/indices/indicators/sp-corelogic-case-shiller-us-national-home-price-nsa-index/</a>.

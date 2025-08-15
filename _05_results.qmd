@@ -1,9 +1,33 @@
 # Results
 
-The machine learning model yielded strong baseline results for predicting property sale prices.
+The two-stage analysis yielded a clear and compelling narrative about the power of contextual data.
 
-* **Model Performance**: On the unseen test data, our model achieved an **R-squared ($R^2$) of 0.730**. This indicates that our model can explain approximately 73% of the variance in property sale prices. The **Mean Absolute Error (MAE) was $92,834**. This means that, on average, the model's prediction is off by about $92,834.
+### Stage 1: The Baseline Model - The Limits of Physical Attributes
+The baseline model, relying only on physical attributes, produced modest results. The top performing model for this dataset was the Random Forest Regressor.
 
-* **Feature Importance**: As shown in the visualization of the model's coefficients (@fig-imp), the most impactful positive predictor was whether the purchase was financed. Transaction types, such as construction sales and subdivision transfers, also strongly increased the predicted price. The most impactful negative predictors included having RV parking and a balcony.
+* **Performance:** It achieved an R-squared of 0.327, explaining just under a third of the price variance. The Mean Absolute Error was $136,414.
+* **Feature Importance:** The model's feature importance plot (Figure 5) shows that it relied almost exclusively on Living Area and Property Age. This result highlights a fundamental flaw: the model treats a 2,000-square-foot house in a high-income Portland suburb identically to one in a rural, low-income area. This lack of context is the primary reason for its limited accuracy.
 
-* **Statistical Findings**: The OLS regression analysis revealed a high **Condition Number** of 9.97e+07, a strong indicator of multicollinearity. This suggests that while the model as a whole is predictive, the specific coefficient for any single feature may be unstable.
+::: {#fig-baseline-importance layout-ncol=1}
+![Baseline Model Feature Importances. In a model using only physical attributes, Living Area is the overwhelmingly dominant predictor.](baseline_feature_importances.png){#fig-baseline}
+:::
+
+### Stage 2: The Enriched Model - The Power of Context
+The introduction of advanced features led to a dramatic and unequivocal improvement in performance. The final results for the enriched models are summarized in Table 1.
+
+**Table 1: Enriched Model Performance on Test Data**
+
+| Model                   | Test R-squared ($R^2$) | Test Mean Absolute Error (MAE) |
+| :---------------------- | :-------------------- | :----------------------------- |
+| LightGBM Regressor      | 0.632                 | $84,255                         |
+| RandomForest Regressor  | 0.611                 | $89,591                         |
+| Ridge Regression        | 0.476                 | $113,377                        |
+
+The best-performing model, LightGBM, achieved an R-squared of 0.632, nearly doubling the explanatory power of the baseline. The MAE dropped by over $52,000 to just $84,255. This substantial improvement is a direct result of providing the model with the necessary context. The most compelling evidence comes from the new feature importance plot (Figure 6).
+
+::: {#fig-enriched-importance layout-ncol=1}
+![Enriched Model Feature Importances. With contextual data, the model's focus shifts. While Living Area remains critical, engineered features like Neighborhood Median Area and Property Age now play a much more significant role.](enriched_feature_importances.png){#fig-enriched}
+:::
+
+### Discussion: From Simple Metrics to Complex Insights
+The journey from the Baseline to the Enriched Model tells a clear story. The rise of engineered features like Median Neighborhood Area and the continued importance of Property Age and Living Area in the feature importance plot is the key finding of this research. It provides quantitative proof that the socio-economic health of a neighborhood and its defining characteristics are just as critical as the physical structure of the house itself. The model learned that a smaller home in a desirable neighborhood is often worth more than a larger home in a less sought-after area. In essence, the supplementary data provided the *why* behind the price.

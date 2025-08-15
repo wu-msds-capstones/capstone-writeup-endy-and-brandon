@@ -1,39 +1,19 @@
 # Conclusions & Future Work
 
-This research successfully developed a baseline model for predicting real estate sale prices in Oregon, identifying key value drivers and achieving an R² of 0.73. Our analysis confirmed that physical characteristics like living area, as well as transactional details like the purchase method, are significant predictors of a property's final sale price.
+This research successfully developed a predictive model that explains 63.2% of the variance in Oregon real estate sale prices. Our iterative modeling process demonstrated that while a property's physical attributes provide a reasonable baseline, the most significant gains in predictive power come from advanced feature engineering, particularly the creation of features that provide local neighborhood context.
 
-However, the analysis also highlighted significant limitations that provide a clear path for future work. Our statistical tests revealed strong multicollinearity in the feature set, which makes the specific impact of any single feature difficult to isolate. Furthermore, our decision to drop records with missing data, while expedient, resulted in the loss of over half our initial data and may have introduced sampling bias.
+The primary conclusion is that a property's value is a multifaceted interplay between its physical attributes (led by Living Area), its geographical context (powerfully captured by our engineered neighborhood statistics), and its age. The journey from a model that could only explain 33% of price variance to one that could explain over 63% is a powerful, quantitative confirmation of the real estate axiom that value is determined by more than just the house itself.
 
-To build upon this foundation and create a more robust and reliable tool, the next steps are clear:
+First-time home buyers should take into consideration the most influential property factors when researching home listings and before making purchase decisions. Living area was the most significant indicator of final sale price in our dataset. Housing prices are high and continue to climb so first-time home buyers can take solace in the fact that they can opt for a cheaper and smaller home without compromising on other desired features such as bedroom or bathroom count. Newer properties have higher sale prices as well as properties from affluent neighborhoods.
 
-1.  **Improve Data Integrity**: Implement sophisticated imputation techniques to handle missing values, thereby retaining a larger and more representative dataset.
-2.  **Address Multicollinearity**: Employ regularization methods such as Ridge or Lasso regression, which are specifically designed to handle multicollinearity and produce more stable and interpretable feature coefficients.
-3.  **Advance the Modeling**: Develop more complex, non-linear models, such as Gradient Boosting or Random Forests, to capture more nuanced relationships in the data and likely improve predictive accuracy.
-4.  **Complete the Research Question**: Conduct the planned **Survival Analysis** to model the 'time on market' component, which will provide a holistic tool for evaluating real estate opportunities in Oregon.
+These important indicators have complex relationships with each other and several other factors that we could not include in our analysis. It is up to the first time home buyer to decide what property characteristics truly matter to them. Perhaps they will come to the conclusion they need to increase their search budget. While the median age of the first time home owner remains high, knowledge about the current real estate market is something within the control of the buyer and it is their most powerful tool as they approach the important milestone of home buying.
 
-### Data Ethics
+### Future Work
+Several avenues for future research are apparent:
 
-A commitment to ethical practice was paramount throughout this project, ensuring that our analysis provides valuable insights responsibly, fairly, and transparently. We addressed several key ethical dimensions:
-
-#### Privacy and Data Handling
-
-We have prioritized individual privacy by exclusively using property-level data and avoiding any sensitive, non-public information. While the raw data source contained owner names, this information was explicitly excluded from our analytical dataset and modeling process to protect the privacy of individuals. Our focus remained on the structural and transactional characteristics of the properties themselves, not the people who own them.
-
-#### Algorithmic Bias and Fairness
-
-We acknowledge that real estate data is not neutral; it can reflect and perpetuate historical societal biases, such as those stemming from redlining or socio-economic disparities. Our model could inadvertently learn and amplify these patterns. We took the following points into consideration:
-
-* **Historical Bias:** The sale prices in our dataset are a product of historical market forces. Our model, by learning from this data, may implicitly carry forward biases related to neighborhood demographics or historical underinvestment in certain communities.
-* **Sampling and Measurement Bias:** Our decision to handle missing data by dropping incomplete records presents a significant ethical consideration. If data is more likely to be missing for properties in rural or lower-income areas, our final dataset of 34,507 properties may not be fully representative of the entire state. This could lead to a model that is less accurate for these underrepresented groups, potentially creating an inequitable tool. Future work must address this with more sophisticated imputation methods.
-
-#### Transparency and Responsible Use
-
-Recognizing the potential for misuse, we emphasize that this model is intended as an **informational tool**, not as a definitive arbiter of property value or as a replacement for professional appraisal and financial advice.
-
-* **Transparency:** We are transparent about the model's performance and limitations. With a Mean Absolute Error of approximately **$92,834**, the predictions should be understood as data-driven estimates with a known margin of error, not as exact figures.
-* **Intended Use:** The goal is to empower newcomers to the real estate market with better information. However, we recognize the potential for misuse, such as by institutional investors to make predatory offers or to accelerate gentrification in certain neighborhoods. Therefore, we stress that the model's outputs should always be used in conjunction with professional human judgment and a qualitative understanding of the local context.
-
-
+* **Survival Analysis for Time on Market:** The next logical step is to conduct a survival analysis to model the time a property spends on the market, addressing not only *how much?* but also *how long?*.
+* **Incorporate Time-Series Data:** Incorporating time-series data, such as historical interest rates or changes in local housing inventory, would allow the model to adapt to changing market conditions.
+* **Granular Geospatial Features:** To address the unobserved variables limitation, future iterations could benefit from integrating data on specific school district ratings, proximity to parks, or local crime rates to capture neighborhood-level nuances and further enhance predictive accuracy.
 
 
 
