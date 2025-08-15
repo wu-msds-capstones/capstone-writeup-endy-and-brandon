@@ -1,4 +1,4 @@
-# Conclusions & Future Work
+# Data Ethics
 
 A commitment to ethical practice was paramount throughout this project. Before detailing our methodology, it is essential to frame our work within the ethical dimensions of data handling, algorithmic fairness, and responsible use.
 

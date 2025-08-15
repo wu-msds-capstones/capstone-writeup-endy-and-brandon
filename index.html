@@ -145,7 +145,7 @@ window.Quarto = {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
-  <li><a href="#conclusions-future-work" id="toc-conclusions-future-work" class="nav-link" data-scroll-target="#conclusions-future-work">Conclusions &amp; Future Work</a></li>
+  <li><a href="#data-ethics" id="toc-data-ethics" class="nav-link" data-scroll-target="#data-ethics">Data Ethics</a></li>
   <li><a href="#data-acquisition-and-preprocessing" id="toc-data-acquisition-and-preprocessing" class="nav-link" data-scroll-target="#data-acquisition-and-preprocessing">Data Acquisition and Preprocessing</a>
   <ul class="collapse">
   <li><a href="#data-sourcing-and-integration" id="toc-data-sourcing-and-integration" class="nav-link" data-scroll-target="#data-sourcing-and-integration">Data Sourcing and Integration</a></li>
@@ -165,7 +165,7 @@ window.Quarto = {
   <li><a href="#discussion-from-simple-metrics-to-complex-insights" id="toc-discussion-from-simple-metrics-to-complex-insights" class="nav-link" data-scroll-target="#discussion-from-simple-metrics-to-complex-insights">Discussion: From Simple Metrics to Complex Insights</a></li>
   </ul></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
-  <li><a href="#conclusions-future-work-1" id="toc-conclusions-future-work-1" class="nav-link" data-scroll-target="#conclusions-future-work-1">Conclusions &amp; Future Work</a>
+  <li><a href="#conclusions-future-work" id="toc-conclusions-future-work" class="nav-link" data-scroll-target="#conclusions-future-work">Conclusions &amp; Future Work</a>
   <ul class="collapse">
   <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -229,8 +229,8 @@ Figure&nbsp;1
 </ul>
 <p>By building a statistical model that incorporates features from all these domains, we can effectively deconstruct a final sale price into its component parts. The goal is to quantify the impact of each individual feature: How much value does an extra bathroom add, on average? What is the price premium for a home in Portland versus one in Eugene? This data-driven approach provides a structured, evidence-based alternative to the years of hard-won intuition, creating a tool that can empower first-time home buyers to better understand the forces shaping the Oregon real estate market.</p>
 </section>
-<section id="conclusions-future-work" class="level1">
-<h1>Conclusions &amp; Future Work</h1>
+<section id="data-ethics" class="level1">
+<h1>Data Ethics</h1>
 <p>A commitment to ethical practice was paramount throughout this project. Before detailing our methodology, it is essential to frame our work within the ethical dimensions of data handling, algorithmic fairness, and responsible use.</p>
 <ul>
 <li><strong>Privacy and Data Handling:</strong> We have prioritized individual privacy by exclusively using property-level data. While the raw data source contained personally identifiable information such as owner names, this information was explicitly excluded from our analytical dataset at the earliest stage. Our focus remained squarely on the structural, transactional, and geographical characteristics of the properties themselves, the <em>what</em> and <em>where</em>, not the <em>who</em>.</li>
@@ -471,7 +471,7 @@ Figure&nbsp;6
 <li><strong>Data Granularity:</strong> While we incorporated zip code-level data, more granular information, such as specific school district ratings or hyper-local crime statistics, could further improve performance.</li>
 </ul>
 </section>
-<section id="conclusions-future-work-1" class="level1">
+<section id="conclusions-future-work" class="level1">
 <h1>Conclusions &amp; Future Work</h1>
 <p>This research successfully developed a predictive model that explains 63.2% of the variance in Oregon real estate sale prices. Our iterative modeling process demonstrated that while a property’s physical attributes provide a reasonable baseline, the most significant gains in predictive power come from advanced feature engineering, particularly the creation of features that provide local neighborhood context.</p>
 <p>The primary conclusion is that a property’s value is a multifaceted interplay between its physical attributes (led by Living Area), its geographical context (powerfully captured by our engineered neighborhood statistics), and its age. The journey from a model that could only explain 33% of price variance to one that could explain over 63% is a powerful, quantitative confirmation of the real estate axiom that value is determined by more than just the house itself.</p>
