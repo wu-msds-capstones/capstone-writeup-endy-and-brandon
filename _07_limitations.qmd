@@ -1,0 +1,8 @@
+# Limitations
+
+While this study successfully developed a methodologically sound model, it is crucial to acknowledge its limitations. The final R-squared value of 0.632 indicates that approximately 37% of the variability in Oregon's home prices remains unexplained by our model. This is not a failure but an important finding about the inherent complexity of the real estate market. Several factors contribute to this:
+
+* **Unobserved Variables (The Last Mile Problem):** Our dataset does not capture critical factors like interior condition, quality of finishes, recent renovations, or curb appeal. These variables constitute a significant portion of the remaining unexplained variance.
+* **Market Dynamics and Human Factors:** A final sale price is the result of a negotiation influenced by factors like seller motivation, buyer sentiment, and the specific competitive landscape at the moment of sale. These elements are highly stochastic and cannot be fully captured by static features.
+* **Data Granularity:** While we incorporated zip code-level data, more granular information, such as specific school district ratings or hyper-local crime statistics, could further improve performance.
+

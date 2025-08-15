@@ -157,7 +157,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#stage-1-the-baseline-model" id="toc-stage-1-the-baseline-model" class="nav-link" data-scroll-target="#stage-1-the-baseline-model">Stage 1: The Baseline Model</a></li>
   <li><a href="#stage-2-the-enriched-model" id="toc-stage-2-the-enriched-model" class="nav-link" data-scroll-target="#stage-2-the-enriched-model">Stage 2: The Enriched Model</a></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
@@ -169,9 +168,6 @@ window.Quarto = {
   <li><a href="#conclusions-future-work-1" id="toc-conclusions-future-work-1" class="nav-link" data-scroll-target="#conclusions-future-work-1">Conclusions &amp; Future Work</a>
   <ul class="collapse">
   <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
-  </ul></li>
-  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a>
-  <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -366,102 +362,6 @@ Figure&nbsp;4
 <li><p><strong>Evaluation Metrics:</strong> Model performance was quantified using two standard metrics: R-squared (<span class="math inline">\(R^2\)</span>), which measures the proportion of price variance explained by the model, and Mean Absolute Error (MAE), which provides the average prediction error in dollars.</p></li>
 </ul>
 </section>
-<section id="data-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
-<p>Visualizations are essential for exploring the data, evaluating model performance, and communicating key findings. The following figures tell the story of our data and the model’s capabilities.</p>
-<div id="fig-distribution" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-distribution" style="flex-basis: 100.0%;justify-content: flex-start;">
-<div id="fig-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_1_sale_amount_distribution.png" class="lightbox" data-gallery="fig-distribution" title="Figure&nbsp;5&nbsp;(a): Distribution of Property Sale Amounts."><img src="visual_1_sale_amount_distribution.png" class="img-fluid figure-img" data-ref-parent="fig-distribution"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Distribution of Property Sale Amounts.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: This histogram focuses on the bulk of the Oregon housing market. The distribution is clearly right-skewed, with the highest concentration of properties sold for between $200K and $500K.
-</figcaption>
-</figure>
-</div>
-<div id="fig-correlation" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-correlation" style="flex-basis: 100.0%;justify-content: flex-start;">
-<div id="fig-corr" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_2_living_area_vs_sale_amount.png" class="lightbox" data-gallery="fig-correlation" title="Figure&nbsp;6&nbsp;(a): Living Area Shows a Clear Positive Correlation with Sale Amount."><img src="visual_2_living_area_vs_sale_amount.png" class="img-fluid figure-img" data-ref-parent="fig-correlation"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Living Area Shows a Clear Positive Correlation with Sale Amount.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: This scatter plot visualizes the relationship between a property’s living area and its sale price, confirming that <code>living_square_feet</code> is a fundamental predictor of a home’s value.
-</figcaption>
-</figure>
-</div>
-<div id="fig-performance" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-performance" style="flex-basis: 100.0%;justify-content: flex-start;">
-<div id="fig-perf" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_3_actual_vs_predicted.png" class="lightbox" data-gallery="fig-performance" title="Figure&nbsp;7&nbsp;(a): Model Performance: Actual vs.&nbsp;Predicted Sale Amounts."><img src="visual_3_actual_vs_predicted.png" class="img-fluid figure-img" data-ref-parent="fig-performance"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Model Performance: Actual vs.&nbsp;Predicted Sale Amounts.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: This plot evaluates our model’s predictive accuracy. The points cluster tightly around the red dashed line (perfect prediction), and the annotated R² of 0.730 confirms our model explains 73% of the variability in sale prices.
-</figcaption>
-</figure>
-</div>
-<div id="fig-importance" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-importance" style="flex-basis: 100.0%;justify-content: flex-start;">
-<div id="fig-imp" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-imp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="visual_4_feature_importance.png" class="lightbox" data-gallery="fig-importance" title="Figure&nbsp;8&nbsp;(a): Top 15 Most Influential Features on Sale Amount."><img src="visual_4_feature_importance.png" class="img-fluid figure-img" data-ref-parent="fig-importance"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-imp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Top 15 Most Influential Features on Sale Amount.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: This bar chart displays the model’s coefficients, quantifying the impact of each feature. Green bars indicate a positive relationship (increasing the price), while red bars indicate a negative one.
-</figcaption>
-</figure>
-</div>
-</section>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
@@ -481,7 +381,7 @@ Figure&nbsp;8: This bar chart displays the model’s coefficients, quantifying t
 <div id="fig-baseline" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-baseline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="baseline_feature_importances.png" class="lightbox" data-gallery="fig-baseline-importance" title="Figure&nbsp;9&nbsp;(a): Baseline Model Feature Importances. In a model using only physical attributes, Living Area is the overwhelmingly dominant predictor."><img src="baseline_feature_importances.png" class="img-fluid figure-img" data-ref-parent="fig-baseline-importance"></a>
+<a href="baseline_feature_importances.png" class="lightbox" data-gallery="fig-baseline-importance" title="Figure&nbsp;5&nbsp;(a): Baseline Model Feature Importances. In a model using only physical attributes, Living Area is the overwhelmingly dominant predictor."><img src="baseline_feature_importances.png" class="img-fluid figure-img" data-ref-parent="fig-baseline-importance"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-baseline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Baseline Model Feature Importances. In a model using only physical attributes, Living Area is the overwhelmingly dominant predictor.
@@ -492,7 +392,7 @@ Figure&nbsp;8: This bar chart displays the model’s coefficients, quantifying t
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-baseline-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9
+Figure&nbsp;5
 </figcaption>
 </figure>
 </div>
@@ -541,7 +441,7 @@ Figure&nbsp;9
 <div id="fig-enriched" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-enriched-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="enriched_feature_importances.png" class="lightbox" data-gallery="fig-enriched-importance" title="Figure&nbsp;10&nbsp;(a): Enriched Model Feature Importances. With contextual data, the model’s focus shifts. While Living Area remains critical, engineered features like Neighborhood Median Area and Property Age now play a much more significant role."><img src="enriched_feature_importances.png" class="img-fluid figure-img" data-ref-parent="fig-enriched-importance"></a>
+<a href="enriched_feature_importances.png" class="lightbox" data-gallery="fig-enriched-importance" title="Figure&nbsp;6&nbsp;(a): Enriched Model Feature Importances. With contextual data, the model’s focus shifts. While Living Area remains critical, engineered features like Neighborhood Median Area and Property Age now play a much more significant role."><img src="enriched_feature_importances.png" class="img-fluid figure-img" data-ref-parent="fig-enriched-importance"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-enriched-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Enriched Model Feature Importances. With contextual data, the model’s focus shifts. While Living Area remains critical, engineered features like Neighborhood Median Area and Property Age now play a much more significant role.
@@ -552,7 +452,7 @@ Figure&nbsp;9
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-enriched-importance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10
+Figure&nbsp;6
 </figcaption>
 </figure>
 </div>
@@ -586,14 +486,6 @@ Figure&nbsp;10
 <li><strong>Granular Geospatial Features:</strong> To address the unobserved variables limitation, future iterations could benefit from integrating data on specific school district ratings, proximity to parks, or local crime rates to capture neighborhood-level nuances and further enhance predictive accuracy.</li>
 </ul>
 </section>
-</section>
-<section id="introduction-1" class="level1">
-<h1>Introduction</h1>
-<p>For seasoned real estate professionals, the ability to accurately estimate a property’s market value is a cornerstone of their expertise. This intuition, developed over years of experience, provides a significant advantage in a competitive landscape. However, for newcomers, be it first-time homebuyers navigating a complex process or new agents striving to build a successful career, this knowledge is not readily available. This project aims to bridge that knowledge gap of homebuying within Oregon’s dynamic housing market by leveraging data science to move beyond intuition and uncover key, quantifiable drivers of property valuation.</p>
-<p>The Oregon housing market provides a compelling and timely case study for this endeavor. The state’s real estate landscape is in a state of flux, characterized by competing signals that can be difficult for non-experts to interpret. In the last year, Oregon has seen a modest 0.3% rise in median home prices, coupled with a significant 7.9% increase in housing supply <span class="citation" data-cites="oregon_market_data">(<a href="#ref-oregon_market_data" role="doc-biblioref">Redfin 2025</a>)</span>. Counterintuitively, the median days on the market has also increased, suggesting a potential cooling or shift in market dynamics. It is within this complex environment that data-driven insights become most valuable.</p>
-<p>Due to the conflicting real estate market, first-time home buyers are in a tricky position. They face increasing home prices in competitive and sought after locations while experiencing economic instability and uncertainty from the current administration <span class="citation" data-cites="feng_romans_2025">(<a href="#ref-feng_romans_2025" role="doc-biblioref">Feng and Romans 2025</a>)</span>. Additionally, the rise in interest rates does not ease buyers’ concerns and may lead them to make uninformed purchases in fear that rates may not decline in the future. They may not realize that their desirable features in a home is what is driving a high price point. Perhaps they could have saved money by compromising and leveraging certain characteristics of a property.</p>
-<p>The central research question guiding this project is therefore: <strong>Which quantifiable property characteristics in Oregon are the most significant predictors of a residential real estate property’s final sale price?</strong></p>
-<p>To answer this question, we undertook a two-stage modeling approach. We first established a Baseline Model using only a property’s intrinsic physical attributes. This initial model, while informative, proved limited in its predictive power. We then developed an Enriched Model that incorporated advanced feature engineering, creating new variables to capture neighborhood context, market seasonality, and property layout efficiencies. By comparing multiple machine learning algorithms, including Ridge Regression, Random Forest, and LightGBM, this approach allowed us to not only dramatically improve predictive accuracy but, more importantly, to interpret the complex interplay of factors that determine a home’s ultimate value. Utilizing our findings, we are able to give general recommendations to first-time home buyers in Oregon.</p>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

@@ -1,0 +1,27 @@
+# Methodology
+
+Our analysis was structured in two stages to clearly demonstrate the value of advanced feature engineering [@project_proposal].
+
+### Stage 1: The Baseline Model
+The initial stage focused on creating a simple, interpretable baseline.
+
+* **Features:** This model was trained using only five core physical attributes: Living Area, Lot Size, Bedrooms, Bathrooms, and Property Age.
+* **Model:** A standard RandomForestRegressor was used to establish a performance benchmark.
+
+### Stage 2: The Enriched Model
+The second stage aimed to maximize predictive power by creating a rich set of contextual features.
+
+* **Advanced Feature Engineering:** We engineered several new categories of features:
+    * **Time-Based Features:** `sale_month` and `sale_quarter` were extracted to capture market seasonality.
+    * **Ratio Features:** `bathroom-to-bedroom` ratio and `garage-to-living-area` ratio were created to provide insights into property layout and utility.
+    * **Neighborhood Aggregate Features:** In a crucial step to prevent data leakage, a custom transformer was built into our pipeline. This transformer calculates the median living area and median property age for each zip code using only the training data and then maps these values to the test set. This provides powerful, and localized context for each property.
+
+* **Model Selection:** We implemented a comparative approach using three distinct algorithms:
+    * **Ridge Regression:** A regularized linear model serving as a robust, enhanced baseline.
+    * **Random Forest Regressor:** A powerful ensemble model effective at capturing non-linear relationships.
+    * **LightGBM Regressor:** A highly efficient, state-of-the-art gradient boosting model, often considered the industry standard for tabular data.
+
+* **Model Training and Validation:** The dataset was partitioned into an 80% training set and a 20% testing set. All models were trained within a scikit-learn Pipeline that handled all preprocessing steps, including imputation, scaling, and encoding, to ensure a robust and leak-proof workflow. Hyperparameter tuning was performed using GridSearchCV and RandomizedSearchCV.
+
+* **Evaluation Metrics:** Model performance was quantified using two standard metrics: R-squared ($R^2$), which measures the proportion of price variance explained by the model, and Mean Absolute Error (MAE), which provides the average prediction error in dollars.
+

@@ -1,0 +1,20 @@
+# Conclusions & Future Work
+
+This research successfully developed a predictive model that explains 63.2% of the variance in Oregon real estate sale prices. Our iterative modeling process demonstrated that while a property's physical attributes provide a reasonable baseline, the most significant gains in predictive power come from advanced feature engineering, particularly the creation of features that provide local neighborhood context.
+
+The primary conclusion is that a property's value is a multifaceted interplay between its physical attributes (led by Living Area), its geographical context (powerfully captured by our engineered neighborhood statistics), and its age. The journey from a model that could only explain 33% of price variance to one that could explain over 63% is a powerful, quantitative confirmation of the real estate axiom that value is determined by more than just the house itself.
+
+First-time home buyers should take into consideration the most influential property factors when researching home listings and before making purchase decisions. Living area was the most significant indicator of final sale price in our dataset. Housing prices are high and continue to climb so first-time home buyers can take solace in the fact that they can opt for a cheaper and smaller home without compromising on other desired features such as bedroom or bathroom count. Newer properties have higher sale prices as well as properties from affluent neighborhoods.
+
+These important indicators have complex relationships with each other and several other factors that we could not include in our analysis. It is up to the first time home buyer to decide what property characteristics truly matter to them. Perhaps they will come to the conclusion they need to increase their search budget. While the median age of the first time home owner remains high, knowledge about the current real estate market is something within the control of the buyer and it is their most powerful tool as they approach the important milestone of home buying.
+
+### Future Work
+Several avenues for future research are apparent:
+
+* **Survival Analysis for Time on Market:** The next logical step is to conduct a survival analysis to model the time a property spends on the market, addressing not only *how much?* but also *how long?*.
+* **Incorporate Time-Series Data:** Incorporating time-series data, such as historical interest rates or changes in local housing inventory, would allow the model to adapt to changing market conditions.
+* **Granular Geospatial Features:** To address the unobserved variables limitation, future iterations could benefit from integrating data on specific school district ratings, proximity to parks, or local crime rates to capture neighborhood-level nuances and further enhance predictive accuracy.
+
+
+
+

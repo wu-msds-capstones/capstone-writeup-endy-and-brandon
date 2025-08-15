@@ -1,0 +1,35 @@
+# Data Acquisition and Preprocessing
+
+The foundation of this analysis rests upon the systematic acquisition and meticulous preparation of a complex, multi-source dataset.
+
+### Data Sourcing and Integration
+The data for this project was sourced from the RealEstateAPI [@realestateapi_main], a comprehensive platform providing granular real estate data. The core dataset, containing sales transactions, was strategically enriched with data from four other key tables: Property Information, Lot Information, Tax Information, and Demographics. A critical methodological decision was the explicit exclusion of certain datasets, such as those containing official Assessed Value, as this would constitute target leakage and lead to a misleadingly accurate model.
+
+### Data Cleaning and Filtering
+Before cleaning the dataset, we wanted to conduct some exploratory data analysis to understand what was happening in our data and to check that it was read-in correctly.
+
+We noticed an interesting feature in our dataset called `property_use` which defined the primary usage of each property. With a simple SQL code, we were able to see the unique values in that column. Then, we noticed that not all properties in our dataset would be relevant to our analysis. As shown in Figure 2, in our dataset, there exists numerous properties that are not suitable for first-time home buyers. These properties include parking lots, restaurant spaces, agricultural land and much more. We determined that, since our project focuses on interests of first-time home buyers, we should run our analysis and models on single family residential properties.
+
+::: {#fig-property-use layout-ncol=1}
+![Count of Single Family Residential Properties Against Other Uses. There are over 20,000 properties in our dataset that are not single family residential properties which are our main focus. Null values appear in a very small amount of properties.](filter_error.png){#fig-prop-use}
+:::
+
+While a large portion of our initial data was not relevant to our analysis, we still had thousands of observations and properties to work with. Therefore, the data was filtered to include only Single-Family Homes and arms-length transactions. Arms-length transactions are fair market sales between unrelated parties [@realestateapi_docs]. By filtering on those transactions, we can remove some of the bias in our dataset as transactions between related parties may undermine the prices of the current market. After removing records with invalid data, the dataset contained 21,720 unique sale records.
+
+### Imputation
+A significant challenge was the presence of missing values. Instead of dropping incomplete rows, a robust imputation strategy was implemented. Missing numerical values were filled using a statistically sound median-based approach, while missing categorical data was filled with the label 'Unknown'. This approach allowed us to preserve the vast majority of our collected data.
+
+### Target Variable Transformation
+We shifted our exploratory data analysis to our target variable to check on any concerning insights. As shown on Figure 3, our `sale_amount` target variable had a large range.
+
+::: {#fig-sale-dist layout-ncol=1}
+![A Histogram Distribution of our Target Variable, Sale Amount. The range of sale_amount is huge. There are several properties that have sold for over $2 million dollars.](skew.png){#fig-sale-dist-full}
+:::
+
+The range seems atypical for single family residential properties. There are numerous outliers in our data and it is concerning that it is spread out among the millions of dollars as it might create a bias in our data. We explored deeper into this matter by zooming in to the histogram as shown in Figure 4.
+
+::: {#fig-sale-zoom layout-ncol=1}
+![An Enhanced Histogram Distribution of our Target Variable, Sale Amount. Data is right-skewed despite the large amount of outliers.](outliers.png){#fig-sale-dist-zoom}
+:::
+
+This revealed a strong positive right skew in the Sale Amount variable that it undermines Oregon’s housing market. To meet the assumptions of regression modeling, a logarithmic transformation (`np.log1p`) was applied, resulting in a normalized distribution suitable for analysis.
